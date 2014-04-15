@@ -1,14 +1,18 @@
 #include "ray.h"
+#include "operations.h"
 
 namespace Svit
 {
-	Ray::Ray (Vector3d& origin, Vector3d& direction)
+	template <typename Scalar>
+	Ray<Scalar>::Ray (Vector<Scalar>& origin, Vector<Scalar>& direction)
 	{
 		_origin = origin;
 		_direction = direction;
 	}
 
-	Vector3d Ray::operator() (float time)
+	template <typename Scalar>
+	Point<Scalar> 
+	Ray<Scalar>::operator() (Scalar time) const
 	{
 		return _origin + _direction * time;
 	}
