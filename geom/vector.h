@@ -7,16 +7,22 @@ namespace Svit
 	class Vector 
 	{
 		public:
-			Vector(Scalar _x, Scalar _y)
+			Vector () {}
+
+			Vector (Scalar _x, Scalar _y)
 				: x(_x), y(_y), z(0), w(0)
 			{ }
 
-			Vector(Scalar _x, Scalar _y, Scalar _z)
+			Vector (Scalar _x, Scalar _y, Scalar _z)
 				: x(_x), y(_y), z(_z), w(0)
 			{ }
 
-			Vector(Scalar _x, Scalar _y, Scalar _z, Scalar _w)
+			Vector (Scalar _x, Scalar _y, Scalar _z, Scalar _w)
 				: x(_x), y(_y), z(_z), w(_w)
+			{ }
+
+			Vector (const Vector& other)
+				: x(other.x), y(other.y), z(other.z), w(other.w)
 			{ }
 
 			Scalar x, y, z, w;
