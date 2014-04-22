@@ -21,6 +21,10 @@ namespace Svit
 
 			Scalar x, y, z, w;
 	};
+
+	typedef Point<float> Point4;
+	typedef Point<float> Point3;
+	typedef Point<float> Point2;
 }
 
 #endif
