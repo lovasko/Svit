@@ -6,18 +6,17 @@
 
 namespace Svit
 {
-	template <typename Scalar>
 	class Ray
 	{
 		public:
-			Point<Scalar> origin;
-			Vector<Scalar> direction;
+			Point3 origin;
+			Vector3 direction;
 
-			Ray (Vector<Scalar>& _origin, Vector<Scalar>& _direction)
+			Ray (Point3& _origin, Vector3& _direction)
 				: origin(_origin), direction(_direction)
 			{ }
 
-			Point<Scalar> operator() (Scalar _time) const
+			Point3 operator() (float time) const
 			{
 				return origin + direction * _time;
 			}
