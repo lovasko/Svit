@@ -27,6 +27,11 @@ namespace Svit
 
 			Scalar x, y, z, w;
 	};
+
+	typedef Vector<float> Vector4;
+	typedef Vector<float> Vector3;
+	typedef Vector<float> Vector2;
+	typedef Vector<int> Vector2i;
 }
 
 #endif
