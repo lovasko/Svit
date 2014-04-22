@@ -1,15 +1,18 @@
-#include <Eigen/Core>
 #include <iostream>
 
 #include "geom/ray.h"
+#include "image/image.h"
+#include "image/formats.h"
+
+using namespace Svit;
 
 int 
 main (void)
 {
-	Eigen::Vector3d d(1.0, 0.0, 1.0);
-	Eigen::Vector3d o(0.0, 0.0, 0.0);
+	Vector<int> size(200, 100);
+	Image<RGB8Format> image(size);
 
-	Svit::Ray ray(o, d);
-	std::cout << ray(0.5) << std::endl;
+	std::cout << image(1, 10).x << std::endl;
+
 	return 0;
 }
