@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\usepackage{color}
+\usepackage{fullpage}
+
+\begin{document}
+	\begin{center}	
+		{\Huge \bf Svit Architecture} \\
+		Daniel Lovasko
+	\end{center}	
+	\vskip\medskipamount 
+
+	\section*{Renderer}
+	\subsection*{Settings}
+
+	\section*{Engine}
+	\subsection*{Cosine Debugger}
+	The most simple engine. Its sole purpose is to render the scene at highest
+	speed without any materials or lights, just to be able to check the object
+	presence, position and visibility. Each color is defined as the absolute
+	value of the {\tt cos}ine of the angle between the ray direction and the
+	normal vector defined for the solid at the intersection point.
+
+	\section*{Node}
+	All scenes are composed of {\tt Node} objects. {\tt Node} is either a {\tt
+	Group} descendant or {\tt Solid} descendant.
+	\subsection*{Group}
+	{\tt Group}s are organized in a tree fashion. Each {\tt Group} can hold as
+	many {\tt Group}s or {\tt Solid}s as desired. Only member function desired by
+	the abstract class {\tt Group} is the {\tt add}, which has to be implemented
+	by each {\tt Group} implementation.
+	\subsubsection*{SimpleGroup}
+	Basic implementation, that only calls the ray intersection function on all
+	its {\tt Node}s that it contains. After simply harvesting all of the
+	intersections, {\tt SimpleGroup} returns them untouched.
+	\subsection*{Solid}
+	{\tt Solid} represents the set of actual geometry primitives. All of the {\tt
+	Solid} descendants shall be visible objects, as opposed to {\tt Group}
+	objects, which are mere abstract data structures.
+	\subsubsection*{Infinite Plane} Defined by two variables: a random {\tt
+	Point3} on the plane and a normal ({\tt Vector3}). An object of infinite area
+	and volume, unlimited in two directions. 
+
+	\section*{Image}
+
+	\section*{Intersection}
+
+	\section*{World}
+
+	\section*{Camera}
+	An object stored inside the {\tt World} that is used to generate rays that
+	are afterwards shoot into the scene. Each {\tt Camera} type needs only to
+	override the function {\tt get\_ray}.
+	\subsection*{Perspective Camera}
+	Basic type of {\tt Camera} that is defined by 5 attributes: its {\tt
+	position}, {\tt forward} vector which denotes where is the camera"looking",
+	{\tt up} vector that indicates where is the top of the world, {\tt area}
+	containing implicitly the aspect ratio of the image and its dimensions.
+	Finally the {\tt horizontal\_angle} defining the opening horizontal angle in
+	radians of the camera.
+	It is important to note, that vectors {\tt forward} and {\tt up} have to be
+	perpendicular for the {\tt PerspectiveCamera} to operate as expected.
+
+	\section*{Hashing}
+	Each class or struct in the project has defined its hashing function. The
+	hash is obtained by hashing the common types as {\tt float} or {\tt int} and
+	then combining them together with the {\tt hash\_combine} function.
+	Hashes are used to verify the data integrity sent over network.
+
+	\section*{std::cout}
+	\section*{Serialization}
+	\section*{Basic Geometry}
+	\subsection*{SIMD Optimization}
+	\subsubsection*{x86}
+
+	\section*{Animation}
+
+	\section*{Networking}
+
+	\section*{Super-sampling}
+	\subsection*{Random jitter}
+	\subsection*{Poisson}
+
+\end{document}
+
