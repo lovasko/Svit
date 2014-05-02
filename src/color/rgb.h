@@ -21,6 +21,14 @@ namespace Svit
 				w = _value;
 			}
 
+			RGB (float _red, float _green, float _blue)
+			{ 
+				x = _red;
+				y = _green;
+				z = _blue;
+				w = 1.0;
+			}
+
 			RGB 
 			clamp()
 			{
