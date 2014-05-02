@@ -8,6 +8,7 @@ namespace Svit
 {
 	struct Settings
 	{
+		Rectangle whole_area;
 		Rectangle area;
 		Vector2i tile_size;
 		unsigned int max_thread_count;
