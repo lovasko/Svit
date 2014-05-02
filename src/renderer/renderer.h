@@ -6,8 +6,6 @@
 #include "engine/engine.h"
 #include "renderer/settings.h"
 
-// TODO write move constructor 
-
 namespace Svit
 {
 	class Renderer
