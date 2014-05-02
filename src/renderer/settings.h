@@ -13,6 +13,16 @@ namespace Svit
 		Vector2i tile_size;
 		unsigned int max_thread_count;
 		unsigned int sample_count;
+
+		void
+		dump (const char *name, unsigned int level = 0)
+		{
+			std::string indentation(level*2, ' ');	
+			std::cout << indentation << name << " = Settings" << std::endl;
+			area.dump("area", level+1);
+			tile_size.dump("tile size", level+1);
+			// TODO sample_count and max_thread_count
+		}
 	};
 }
 
