@@ -50,7 +50,20 @@ namespace Svit
 
 				for (int x = 0; x < size.x; x++)
 				for (int y = 0; y < size.y; y++)
-					(*this)(x, y) = RGB(0.5);
+					(*this)(x, y) = RGB(1.0, 0.7, 0.0);
+			}
+
+			void
+			paste (Point2i start, Image& source)
+			{
+				assert(start.x + source.size.x <= size.x);
+				assert(start.y + source.size.y <= size.y);
+
+				for (int x = start.x; x < start.x + source.size.x; x++) 	
+				for (int y = start.y; y < start.y + source.size.y; y++) 	
+				{
+					(*this)(x, y) = source(x - start.x, y - start.y);
+				}
 			}
 
 			int 
