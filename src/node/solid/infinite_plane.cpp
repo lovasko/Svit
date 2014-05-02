@@ -7,7 +7,8 @@ namespace Svit
 	std::list<Intersection>
 	InfinitePlane::intersect (Ray& _ray)
 	{
-		result.clear();
+		std::list<Intersection> result;
+
 		float angle = normal % _ray.direction;
 
 		if (angle == 0.0)
@@ -15,7 +16,12 @@ namespace Svit
 
 		float t = -(normal % (_ray.origin - point))/angle;
 
-		add_intersection(t, _ray(t), this);
+		Intersection intersection;
+		intersection.t = t;
+		intersection.point = _ray(t);
+		intersection.node = this;
+		result.push_back(intersection);
+
 		return result;
 	}
 

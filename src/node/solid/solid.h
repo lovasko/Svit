@@ -11,8 +11,7 @@ namespace Svit
 	class Solid : public Node
 	{
 		public:
-			std::list<Intersection> result;
-
+			/*
 			void 
 			add_intersection (float _t, Point3 _point, Solid *who)
 			{
@@ -23,12 +22,13 @@ namespace Svit
 
 				result.push_back(i);
 			}
+			*/
 
 			std::list<Intersection>
 			fail ()
 			{
-				result.clear();
-				return result;
+				std::list<Intersection> empty;
+				return empty;
 			}
 
 			void

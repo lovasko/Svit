@@ -5,7 +5,7 @@ namespace Svit
 	std::list<Intersection>
 	Sphere::intersect (Ray& _ray)
 	{
-		result.clear();
+		std::list<Intersection> result;
 
 		Vector3 ray_origin_vector = _ray.origin - Point3(0,0,0);
 		Vector3 sphere_center_vector = center - Point3(0,0,0);
@@ -23,7 +23,12 @@ namespace Svit
 		if (A == 0.0)
 		{
 			t = - C / B;
-			add_intersection(t, _ray(t), this);
+			
+			Intersection intersection;
+			intersection.t = t;
+			intersection.point = _ray(t);
+			intersection.node = this;
+			result.push_back(intersection);
 		}
 		else
 		{
@@ -31,14 +36,22 @@ namespace Svit
 
 			if (discriminant < 0.0)
 			{
-				result.clear();
-				return result;
+				return fail();
 			}
 
 			double t1 = ( - B + sqrt(discriminant)) / (2 * A);
 			double t2 = ( - B - sqrt(discriminant)) / (2 * A);
-			add_intersection(t1, _ray(t1), this);
-			add_intersection(t2, _ray(t2), this);
+			Intersection i1;
+			i1.t = t1;
+			i1.point = _ray(t1);
+			i1.node = this;
+			result.push_back(i1);
+
+			Intersection i2;
+			i2.t = t2;
+			i2.point = _ray(t2);
+			i2.node = this;
+			result.push_back(i2);
 		}
 
 		return result;
