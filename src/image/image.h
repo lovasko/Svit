@@ -2,6 +2,7 @@
 #define SVIT_IMAGE
 
 #include "geom/vector.h"
+#include "geom/point.h"
 #include "color/rgb.h"
 
 #include <assert.h>
