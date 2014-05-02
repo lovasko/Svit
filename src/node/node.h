@@ -16,6 +16,7 @@ namespace Svit
 			virtual std::list<Intersection>
 			intersect (Ray& _ray) = 0;
 
+			// TODO = 0;
 			virtual void
 			complete_intersection(Intersection *_intersection) 
 			{ 
