@@ -8,7 +8,8 @@
 #include "node/solid/sphere.h"
 #include "node/solid/infinite_plane.h"
 #include "renderer/settings.h"
-#include "renderer/simple.h"
+#include "renderer/serial/serial.h"
+#include "renderer/parallel/parallel.h"
 #include "world/world.h"
 
 #include <iostream>
@@ -20,6 +21,7 @@ int
 main (void)
 {
 	Settings settings;
+	settings.whole_area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
 	settings.area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
 	settings.max_thread_count = 4;
 	settings.tile_size = Vector2i(100, 100);
@@ -45,7 +47,7 @@ main (void)
 		Point3(0.0, 0.75, -2.0),
 		Vector3(0.0, 0.0, 1.0),
 		Vector3(0.0, 1.0, 0.0),
-		Rectangle(Point2i(0, 0), Vector2i(1280, 720)),
+		settings.whole_area.get_aspect_ratio(),
 		M_PI/2.0);
 
 	World world;
@@ -53,7 +55,8 @@ main (void)
 	world.camera = &camera;
 
 	CosineDebuggerEngine engine;
-	SimpleRenderer renderer;
+	ParallelRenderer renderer;
+	//SerialRenderer renderer;
 
 	Image image = renderer.render(world, settings, engine);
 	image.write(std::string("output.png"));
