@@ -11,7 +11,8 @@ namespace Svit
 	std::list<Intersection>
 	SimpleGroup::intersect (Ray& _ray)
 	{
-		result.clear();
+		std::list<Intersection> result;
+
 		std::list<Node*>::iterator it;
 		for (it = nodes.begin(); it != nodes.end(); it++)
 		{
@@ -20,7 +21,6 @@ namespace Svit
 			result.splice(result.end(), node_result);
 		}
 
-		//return std::move(result);
 		return result;
 	}
 }
