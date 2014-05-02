@@ -20,13 +20,14 @@ namespace Svit
 			Vector3 grid_width;
 			Vector3 grid_height;
 			float horizontal_angle;
+			float aspect_ratio;
 
 			void 
 			recompute ();
 
 		public:
 			PerspectiveCamera (Point3 _position, Vector3 _forward, Vector3 _up, 
-			    Rectangle _area, float _horizontal_angle);
+			    float _aspect_ratio, float _horizontal_angle);
 
 			Ray
 			get_ray (float _x, float _y);

@@ -3,13 +3,13 @@
 namespace Svit
 {
 	PerspectiveCamera::PerspectiveCamera (Point3 _position, Vector3 _forward, 
-	    Vector3 _up, Rectangle _area, float _horizontal_angle)
+	    Vector3 _up, float _aspect_ratio, float _horizontal_angle)
 		: position(_position), 
 			forward(~_forward), 
 			up(~_up), 
+			aspect_ratio(_aspect_ratio),
 			horizontal_angle(_horizontal_angle)
 	{
-		set_area(_area);
 		recompute();
 	}
 
@@ -18,7 +18,7 @@ namespace Svit
 	{
 		Vector3 left = ~(forward & up);
 		float half_width = 1.0f / tan(horizontal_angle / 2.0);
-		float half_height = half_width / area.get_aspect_ratio();
+		float half_height = half_width / aspect_ratio;
 
 		grid_width = left * -half_width;
 		grid_height = up * -half_height;
