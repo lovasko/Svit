@@ -9,8 +9,6 @@ namespace Svit
 	class Group : public Node
 	{
 		public:
-			std::list<Intersection> result;
-
 			virtual void
 			add (Node& _node) = 0;
 
