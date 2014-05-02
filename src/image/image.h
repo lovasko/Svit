@@ -11,6 +11,8 @@
 #include <iostream>
 #include <png.h>
 
+// TODO split to image.cpp and image.h
+
 namespace Svit
 {
 	class Image
