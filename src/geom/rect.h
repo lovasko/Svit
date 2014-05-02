@@ -33,6 +33,15 @@ namespace Svit
 
 			return (float)size.x/(float)size.y;
 		}
+
+		void
+		dump (const char *name, unsigned int level = 0)
+		{
+			std::string indentation(level*2, ' ');	
+			std::cout << indentation << name << " = Rectangle" << std::endl;
+			start.dump("start", level+1);
+			size.dump("size", level+1);
+		}
 	};
 }
 
