@@ -30,6 +30,19 @@ namespace Svit
 				return data[x * size.y + y];
 			}
 
+			void
+			resize (Vector2i _size)
+			{
+				data.resize(_size.x * _size.y);
+				size = _size;
+			}
+
+			Image ()
+			{
+				data.resize(0);
+				size = Vector2i(0, 0);
+			}
+
 			Image (Vector2i& _size)
 				: size(_size)
 			{
