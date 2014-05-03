@@ -27,11 +27,12 @@ namespace Svit
 		private:
 			Tiles
 			worker (TaskDispatcher& _task_dispatcher, World& _world, Settings&
-			    _settings, Engine& _engine);
+			    _settings, Engine& _engine, SuperSampling& _super_sampling);
 
 		public:
 			Image
-			render (World& _world, Settings& _settings, Engine& _engine);
+			render (World& _world, Settings& _settings, Engine& _engine, 
+			    SuperSampling& _super_sampling);
 	};
 }
 

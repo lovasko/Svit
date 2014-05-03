@@ -12,7 +12,7 @@ namespace Svit
 {
 	Tiles
 	ParallelRenderer::worker (TaskDispatcher& _task_dispatcher, World& _world, 
-	    Settings& _settings, Engine& _engine)
+	    Settings& _settings, Engine& _engine, SuperSampling& _super_sampling)
 	{
 		Tiles result;
 		SerialRenderer serial_renderer;
@@ -27,7 +27,8 @@ namespace Svit
 			Task task = optional_task.get();
 			settings.area = task;
 
-			Image rendered_image = serial_renderer.render(_world, settings, _engine);
+			Image rendered_image = serial_renderer.render(_world, settings, _engine,
+			    _super_sampling);
 
 			Tile tile;
 			tile.task = task;
@@ -39,7 +40,8 @@ namespace Svit
 	}
 
 	Image
-	ParallelRenderer::render (World& _world, Settings& _settings, Engine& _engine)
+	ParallelRenderer::render (World& _world, Settings& _settings, Engine&
+	    _engine, SuperSampling& _super_sampling)
 	{
 		TaskDispatcher task_dispatcher(_settings);
 		std::vector<std::future<Tiles>> futures(0);
@@ -48,8 +50,9 @@ namespace Svit
 		{
 			// TODO can this be done better? it must be possible
 			futures.push_back(std::async(std::launch::async, [this, &task_dispatcher,
-			    &_world, &_settings, &_engine] () { return worker(task_dispatcher,
-			    _world, _settings, _engine); }));
+			    &_world, &_settings, &_engine, &_super_sampling] () { 
+					return worker(task_dispatcher, _world, _settings, _engine,
+					_super_sampling); }));
 		}
 
 		for (unsigned i = 0; i < futures.size(); i++)

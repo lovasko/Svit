@@ -13,7 +13,8 @@ namespace Svit
 	{
 		public:
 			Image
-			render (World& _world, Settings& _settings, Engine& _engine);
+			render (World& _world, Settings& _settings, Engine& _engine, 
+			    SuperSampling& _super_sampling);
 	};
 }
 

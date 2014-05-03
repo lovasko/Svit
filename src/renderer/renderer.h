@@ -5,6 +5,7 @@
 #include "world/world.h"
 #include "engine/engine.h"
 #include "renderer/settings.h"
+#include "supersampling/supersampling.h"
 
 namespace Svit
 {
@@ -12,7 +13,8 @@ namespace Svit
 	{
 		public:
 			virtual Image
-			render (World& _world, Settings& _settings, Engine& _engine) = 0;
+			render (World& _world, Settings& _settings, Engine& _engine,
+			SuperSampling& _super_sampling) = 0;
 
 			float 
 			compute_normalized_coordinate (float value, float max_value)
