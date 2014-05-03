@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <assert.h>
 
 namespace Svit
 {
@@ -33,6 +34,28 @@ namespace Svit
 				std::cout << std::setprecision(10) << std::fixed;
 				std::cout << indentation << name << " = Point (" << x << ", " << y <<
 				    ", " << z << ", " << w << ")" << std::endl;
+			}
+
+			Scalar& 
+			operator[](const int nth)
+			{
+				assert(nth >= 0 && nth <= 3);
+				switch (nth)
+				{
+					case 0:
+						return x;
+
+					case 1:
+						return y;
+
+					case 2:
+						return z;
+
+					case 3:
+						return w;
+				}
+
+				throw std::runtime_error("Bad index");
 			}
 
 			Scalar x, y, z, w;

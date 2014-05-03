@@ -29,6 +29,28 @@ namespace Svit
 				v = other;
 			}
 
+			float& 
+			operator[](const int nth)
+			{
+				assert(nth >= 0 && nth <= 3);
+				switch (nth)
+				{
+					case 0:
+						return x;
+
+					case 1:
+						return y;
+
+					case 2:
+						return z;
+
+					case 3:
+						return w;
+				}
+
+				throw std::runtime_error("Bad index");
+			}
+
 			inline void
 			dump (const char *name, unsigned int level = 0)
 			{
