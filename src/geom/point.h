@@ -43,7 +43,7 @@ namespace Svit
 	typedef Point<float> Point2;
 	typedef Point<int> Point2i;
 
-	#ifdef __SSE__
+	#if defined(USE_SSE) && defined(__SSE__)
 		#include "geom/optimization/x86/point.h"
 	#endif
 }

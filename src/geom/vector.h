@@ -71,7 +71,7 @@ namespace Svit
 	typedef Vector<float> Vector2;
 	typedef Vector<int> Vector2i;
 
-	#ifdef __SSE__
+	#if defined(USE_SSE) && defined(__SSE__)
 		#include "geom/optimization/x86/vector.h"
 	#endif
 }
