@@ -10,6 +10,7 @@
 #include "renderer/settings.h"
 #include "renderer/serial/serial.h"
 #include "renderer/parallel/parallel.h"
+#include "supersampling/random.h"
 #include "world/world.h"
 
 #include <iostream>
@@ -26,7 +27,7 @@ main (void)
 	settings.max_thread_count = 4;
 	settings.tile_size = Vector2i(100, 100);
 	settings.max_sample_count = 20;
-	settings.adaptive_sample_step = 5;
+	settings.adaptive_sample_step = 2;
 
 	SimpleGroup scene;
 
@@ -56,10 +57,11 @@ main (void)
 	world.camera = &camera;
 
 	CosineDebuggerEngine engine;
-	ParallelRenderer renderer;
-	//SerialRenderer renderer;
+	//ParallelRenderer renderer;
+	SerialRenderer renderer;
+	RandomSuperSampling super_sampling(true);
 
-	Image image = renderer.render(world, settings, engine);
+	Image image = renderer.render(world, settings, engine, super_sampling);
 	image.write(std::string("output.png"));
 
 	return 0;
