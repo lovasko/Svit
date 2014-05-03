@@ -57,8 +57,8 @@ main (void)
 	world.camera = &camera;
 
 	CosineDebuggerEngine engine;
-	//ParallelRenderer renderer;
-	SerialRenderer renderer;
+	ParallelRenderer renderer;
+	//SerialRenderer renderer;
 	RandomSuperSampling super_sampling(true);
 
 	Image image = renderer.render(world, settings, engine, super_sampling);
