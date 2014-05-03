@@ -49,7 +49,7 @@ namespace Svit
 
 				for (int x = 0; x < size.x; x++)
 				for (int y = 0; y < size.y; y++)
-					(*this)(x, y) = RGB(1.0, 0.7, 0.0);
+					(*this)(x, y) = Vector3(1.0, 0.7, 0.0);
 			}
 
 			void
