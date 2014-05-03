@@ -116,6 +116,18 @@ namespace Svit
 		return a;
 	}
 
+	template <typename Scalar>
+	Vector<Scalar>& 
+	operator/=(Vector<Scalar>& v, Scalar s) 
+	{
+		v.x /= s;
+		v.y /= s; 
+		v.z /= s;
+		v.w /= s;
+		
+		return v;
+	}
+
 	#ifdef __SSE__
 		#include "geom/optimization/x86/operations.h"
 	#endif
