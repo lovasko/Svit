@@ -3,7 +3,6 @@
 
 #include "geom/ray.h"
 #include "world/world.h"
-#include "color/rgb.h"
 #include "node/intersection.h"
 
 #include <list>
@@ -14,7 +13,7 @@ namespace Svit
 	class Engine
 	{
 		public:
-			virtual RGB
+			virtual Vector3 
 			get_color (Ray& _ray, World& _world) = 0;
 
 			boost::optional<Intersection>

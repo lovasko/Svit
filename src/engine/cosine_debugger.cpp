@@ -6,7 +6,7 @@
 
 namespace Svit
 {
-	RGB
+	Vector3
 	CosineDebuggerEngine::get_color (Ray& _ray, World& _world)
 	{
 		std::list<Intersection> intersections = _world.scene->intersect(_ray);
@@ -19,10 +19,10 @@ namespace Svit
 			float angle = (~_ray.direction) % (~(i.normal));
 			float color_value = fabs(angle); 
 
-			return RGB(color_value);
+			return Vector3(color_value, color_value, color_value);
 		}
 		else
-			return RGB(0.0);
+			return Vector3();
 	}
 }
 

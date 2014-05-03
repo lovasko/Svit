@@ -3,7 +3,6 @@
 
 #include "geom/vector.h"
 #include "geom/point.h"
-#include "color/rgb.h"
 
 #include <assert.h>
 #include <vector>
@@ -18,12 +17,12 @@ namespace Svit
 	class Image
 	{
 		private:
-			std::vector<RGB> data;
+			std::vector<Vector3> data;
 
 		public:
 			Vector2i size;
 
-			RGB& 
+			Vector3& 
 			operator() (int x, int y)
 			{
 				assert(x >= 0 && y >= 0);
@@ -97,7 +96,7 @@ namespace Svit
 				{
 					for (unsigned x = 0; x < size.x; x++)
 					{
-						RGB& rgb = (*this)(x, y);
+						Vector3& rgb = (*this)(x, y);
 						row[x*3 + 0] = (png_byte)(rgb.x * 255.0); 
 						row[x*3 + 1] = (png_byte)(rgb.y * 255.0);
 						row[x*3 + 2] = (png_byte)(rgb.z * 255.0);

@@ -12,7 +12,7 @@ namespace Svit
 		public:
 			CosineDebuggerEngine () { }
 
-			RGB
+			Vector3
 			get_color (Ray& _ray, World& _world);
 	};
 }
