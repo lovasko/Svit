@@ -8,8 +8,10 @@
 #include <iostream>
 #include <iomanip>
 
+namespace Svit
+{
 	template<>
-	class Svit::Vector<float>
+	class Vector<float>
 	{
 		public:
 			union
@@ -67,9 +69,10 @@
 				std::string indentation(level*2, ' ');
 				std::cout << std::setprecision(10) << std::fixed;
 				std::cout << indentation << name << " = SSE Vector (" << x << ", " << 
-				    y << ", " << z << ", " << w << ")" << std::endl;
+						y << ", " << z << ", " << w << ")" << std::endl;
 			}
 	};
+}
 
 #endif
 

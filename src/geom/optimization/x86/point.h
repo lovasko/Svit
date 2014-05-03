@@ -4,8 +4,10 @@
 #include "geom/optimization/x86/general.h"
 #include "geom/point.h"
 
+namespace Svit
+{
 	template<>
-	class Svit::Point<float>
+	class Point<float>
 	{
 		public:
 			union
@@ -33,9 +35,10 @@
 				std::string indentation(level*2, ' ');
 				std::cout << std::setprecision(10) << std::fixed;
 				std::cout << indentation << name << " = SSEPoint (" << x << ", " << y <<
-				    ", " << z << ", " << w << ")" << std::endl;
+						", " << z << ", " << w << ")" << std::endl;
 			}
 	};
+}
 
 #endif
 

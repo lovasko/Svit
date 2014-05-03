@@ -70,11 +70,11 @@ namespace Svit
 	typedef Vector<float> Vector3;
 	typedef Vector<float> Vector2;
 	typedef Vector<int> Vector2i;
-
-	#if defined(USE_SSE) && defined(__SSE__)
-		#include "geom/optimization/x86/vector.h"
-	#endif
 }
+
+#if defined(USE_SSE) && defined(__SSE__)
+	#include "geom/optimization/x86/vector.h"
+#endif
 
 #endif
 
