@@ -25,7 +25,8 @@ main (void)
 	settings.area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
 	settings.max_thread_count = 4;
 	settings.tile_size = Vector2i(100, 100);
-	settings.sample_count = 10;
+	settings.max_sample_count = 20;
+	settings.adaptive_sample_step = 5;
 
 	SimpleGroup scene;
 

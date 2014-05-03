@@ -12,7 +12,8 @@ namespace Svit
 		Rectangle area;
 		Vector2i tile_size;
 		unsigned int max_thread_count;
-		unsigned int sample_count;
+		unsigned int max_sample_count;
+		unsigned int adaptive_sample_step;
 
 		void
 		dump (const char *name, unsigned int level = 0)
