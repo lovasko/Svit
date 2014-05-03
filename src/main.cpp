@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <thread>
 
 using namespace Svit;
 
@@ -24,7 +25,7 @@ main (void)
 	Settings settings;
 	settings.whole_area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
 	settings.area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
-	settings.max_thread_count = 4;
+	settings.max_thread_count = std::thread::hardware_concurrency();
 	settings.tile_size = Vector2i(100, 100);
 	settings.max_sample_count = 20;
 	settings.adaptive_sample_step = 2;
