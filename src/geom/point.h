@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
 #include <assert.h>
 
 namespace Svit
