@@ -85,7 +85,7 @@ main (void)
 		    (float)frame) + Vector3(0.0, -0.25, -3.0);
 
 		Point3 next = trajectory.evaluate(4.0f / (float)frame_count *
-		    (((float)frame) + 0.0001f)) + Vector3(0.0, -0.25, -3.0);
+		    (((float)frame) + 1.0f)) + Vector3(0.0, -0.25, -3.0);
 
 		Vector3 left = ~(next - now);
 		camera.up = left & camera.forward;
