@@ -11,9 +11,11 @@
 #include "renderer/serial/serial.h"
 #include "renderer/parallel/parallel.h"
 #include "supersampling/random.h"
+#include "trajectory/bspline.h"
 #include "world/world.h"
 
 #include <iostream>
+#include <sstream>
 #include <cmath>
 #include <thread>
 
@@ -27,7 +29,7 @@ main (void)
 	settings.area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
 	settings.max_thread_count = std::thread::hardware_concurrency();
 	settings.tile_size = Vector2i(100, 100);
-	settings.max_sample_count = 20;
+	settings.max_sample_count = 4;
 	settings.adaptive_sample_step = 2;
 
 	SimpleGroup scene;
@@ -62,8 +64,38 @@ main (void)
 	//SerialRenderer renderer;
 	RandomSuperSampling super_sampling(true);
 
-	Image image = renderer.render(world, settings, engine, super_sampling);
-	image.write(std::string("output.png"));
+
+	BSplineTrajectory trajectory(true);
+	trajectory.add_point(Point3(0.0f, 0.0f, 0.0f));
+	trajectory.add_point(Point3(-3.0f, 3.0f, 3.0f));
+	trajectory.add_point(Point3(0.0f, 6.0f, 6.0f));
+	trajectory.add_point(Point3(3.0f, 3.0f, 3.0f));
+
+	unsigned int FPS = 25;
+	float animation_length = 10.0;
+
+	unsigned int frame_count = FPS * (int)(animation_length);
+	for (int frame = 0; frame < frame_count; frame++) 
+	{
+		camera.position = trajectory.evaluate(4.0f / (float)frame_count *
+		    (float)frame) + Vector3(0.0, -0.25, -3.0);
+		camera.look_at(Point3(0.0, 0.0, 3.0));
+
+		camera.position.dump("position");
+		camera.forward.dump("forward");
+		camera.up.dump("up");
+
+		Image image = renderer.render(world, settings, engine, super_sampling);
+
+		std::ostringstream ss;
+		ss << std::setw(3) << std::setfill('0') << frame;
+	  std::string frame_string(ss.str());
+
+		image.write(std::string("output") + frame_string + std::string(".png"));
+
+		std::cout << "Frame " << frame << "/" << frame_count << " done." <<
+		    std::endl;
+	}
 
 	return 0;
 }
