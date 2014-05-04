@@ -81,6 +81,15 @@ main (void)
 		    (float)frame) + Vector3(0.0, -0.25, -3.0);
 		camera.look_at(Point3(0.0, 0.0, 3.0));
 
+		Point3 now = trajectory.evaluate(4.0f / (float)frame_count *
+		    (float)frame) + Vector3(0.0, -0.25, -3.0);
+
+		Point3 next = trajectory.evaluate(4.0f / (float)frame_count *
+		    (((float)frame) + 0.0001f)) + Vector3(0.0, -0.25, -3.0);
+
+		Vector3 left = ~(next - now);
+		camera.up = left & camera.forward;
+
 		camera.position.dump("position");
 		camera.forward.dump("forward");
 		camera.up.dump("up");
