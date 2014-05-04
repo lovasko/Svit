@@ -14,9 +14,6 @@ namespace Svit
 	class PerspectiveCamera : public Camera
 	{
 		private:
-			Point3 position;
-			Vector3 forward;
-			Vector3 up;
 			Vector3 grid_width;
 			Vector3 grid_height;
 			float horizontal_angle;
@@ -26,6 +23,10 @@ namespace Svit
 			recompute ();
 
 		public:
+			Point3 position;
+			Vector3 up;
+			Vector3 forward;
+
 			PerspectiveCamera (Point3 _position, Vector3 _forward, Vector3 _up, 
 			    float _aspect_ratio, float _horizontal_angle);
 
