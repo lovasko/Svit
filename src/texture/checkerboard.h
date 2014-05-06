@@ -10,10 +10,10 @@ namespace Svit
 		private:
 			Vector3 black;
 			Vector3 white;
-			final size;
+			float size;
 
 		public:
-			CheckerboardTexture (Vector3 _black, Vector3 _white, final _size);
+			CheckerboardTexture (Vector3 _black, Vector3 _white, float _size);
 
 			Vector3
 			get_color (Point3 _point);

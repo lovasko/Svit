@@ -1,4 +1,4 @@
-#include "texture/costant.h"
+#include "texture/constant.h"
 
 namespace Svit 
 {

@@ -1,9 +1,11 @@
 #include "texture/checkerboard.h"
 
+#include <cmath>
+
 namespace Svit 
 {
 	CheckerboardTexture::CheckerboardTexture (Vector3 _black, Vector3 _white, 
-	    final _size);
+	    float _size)
 	{
 		black = _black;
 		white = _white;
@@ -11,11 +13,11 @@ namespace Svit
 	}
 
 	Vector3
-	ConstantTexture::get_color (Point3 _point)
+	CheckerboardTexture::get_color (Point3 _point)
 	{
-		final bool x = floor(_point.x / size) % 2 == 0;
-		final bool y = floor(_point.y / size) % 2 == 0;
-		final bool z = floor(_point.z / size) % 2 == 0;
+		bool x = (int)floor(_point.x / size) % 2 == 0;
+		bool y = (int)floor(_point.y / size) % 2 == 0;
+		bool z = (int)floor(_point.z / size) % 2 == 0;
 
 		return (x == y == z ? black : white);
 	}
