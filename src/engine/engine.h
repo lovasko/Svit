@@ -24,7 +24,9 @@ namespace Svit
 
 				std::list<Intersection>::iterator it, best;
 
-				for (best = _intersections.begin(); best != _intersections.end(); best++)
+				for (best = _intersections.begin(); 
+				     best != _intersections.end(); 
+						 best++)
 				{
 					if (best->t > 0.0)
 						break;
