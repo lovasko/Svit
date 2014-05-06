@@ -31,6 +31,7 @@ namespace Svit
 				return empty;
 			}
 
+			// TODO virtual!
 			void
 			complete_intersection(Intersection *_intersection) 
 			{ 
