@@ -41,10 +41,7 @@ namespace Svit
 					best = it;
 				}
 
-				//if (true || found)
-					return boost::optional<Intersection>(*best);
-				//else
-				//	return boost::optional<Intersection>();
+				return boost::optional<Intersection>(*best);
 			}
 	};
 }
