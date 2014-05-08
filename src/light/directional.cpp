@@ -21,6 +21,7 @@ namespace Svit
 	Vector3
 	DirectionalLight::get_intensity (LightHit _hit)
 	{
+		(void) _hit;
 		return color;			
 	}
 }
