@@ -1,5 +1,7 @@
 #include "light/directional.h"
 
+#include <limits>
+
 namespace Svit
 {
 	DirectionalLight::DirectionalLight (Vector3 _direction, Vector3 _color)
@@ -13,7 +15,7 @@ namespace Svit
 	{
 		LightHit light_hit;
 		light_hit.direction = direction;
-		light_hit.distance = FLT_MAX;
+		light_hit.distance = std::numeric_limits<float>::max();
 
 		return light_hit; 
 	}
