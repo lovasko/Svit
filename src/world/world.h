@@ -6,10 +6,8 @@
 #include "light/light.h"
 
 #include <vector>
-
-
-
 #include <memory>
+
 namespace Svit
 {
 	struct World
