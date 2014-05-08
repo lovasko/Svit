@@ -33,6 +33,17 @@ namespace Svit
 
 	template <typename Scalar> 
 	Vector<Scalar> 
+	operator/(const Vector<Scalar>& v, Scalar s)
+	{
+		return Vector<Scalar>(
+			v.x / s,
+			v.y / s,
+			v.z / s,
+			v.w / s);
+	}
+
+	template <typename Scalar> 
+	Vector<Scalar> 
 	operator*(Scalar s, const Vector<Scalar>& v)
 	{
 		return Vector<Scalar>(
