@@ -42,17 +42,6 @@ namespace Svit
 			v.w * s);
 	}
 
-	template <typename Scalar> 
-	Point<Scalar> 
-	operator+(const Point<Scalar>& p, const Vector<Scalar>& v)
-	{
-		return Point<Scalar>(
-			p.x + v.x,
-			p.y + v.y,
-			p.z + v.z,
-			p.w + v.w);
-	}
-
 	template <typename Scalar>
 	Vector<Scalar>
 	operator-(const Point<Scalar>& a, const Point<Scalar>& b)
