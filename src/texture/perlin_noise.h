@@ -9,7 +9,7 @@ namespace Svit
 {
 	class PerlinNoiseTexture : public Texture
 	{
-		private:
+		protected:
 			Vector3 black;
 			Vector3 white;
 			unsigned int octave_count;
