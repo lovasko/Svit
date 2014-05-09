@@ -13,7 +13,7 @@ namespace Svit
 		float sum = 0.0;
 		float discard;
 		for (unsigned int i = 0; i < octave_count; i++)
-			sum += modff(noise_3D(_point * frequencies[i]) * amplitudes[i] * _param,
+			sum += modff(noise_3D(_point * frequencies[i]) * amplitudes[i] * param,
 			    &discard);
 
 		sum = (sum + 1.0f) / 2.0f;
