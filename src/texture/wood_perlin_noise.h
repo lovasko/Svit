@@ -5,7 +5,7 @@
 
 namespace Svit
 {
-	class WoodPerlinNoiseTexture : protected PerlinNoiseTexture
+	class WoodPerlinNoiseTexture : public PerlinNoiseTexture
 	{
 		private: 
 			float param;
