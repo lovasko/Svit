@@ -1,13 +1,16 @@
 #ifndef SVIT_LIGHT
 #define SVIT_LIGHT
 
+#include "geom/vector.h"
+#include "geom/point.h"
+
 namespace Svit
 {
 	struct LightHit
 	{
 		Vector3 direction;
 		float distance;
-	}
+	};
 
 	class Light 
 	{
