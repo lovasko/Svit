@@ -15,7 +15,7 @@ namespace Svit
 			Point3 position;
 			Vector3 direction;
 			Vector3 color;
-			float angle;
+			float cos_cut_off;
 			float exp;
 
 		public:
