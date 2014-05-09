@@ -4,7 +4,9 @@
 
 namespace Svit
 {
-	WoodPerlinNoiseTexture::WoodPerlinNoiseTexture (float _param)
+	WoodPerlinNoiseTexture::WoodPerlinNoiseTexture (Vector3 _black, 
+	    Vector3 _white, float _param)
+		: PerlinNoiseTexture(_black, _white)
 	{
 		param = _param;
 	}
