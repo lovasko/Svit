@@ -22,7 +22,7 @@ namespace Svit
 			SpotLight (Point3 _position, Vector3 _direction, Vector3 _color,
 			    float _angle, float _exp);
 			
-		 	LightHit 
+			LightHit 
 			get_light_hit (Point3 _point);
 
 			Vector3
