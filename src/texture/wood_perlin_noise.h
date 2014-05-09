@@ -15,7 +15,7 @@ namespace Svit
 
 			Vector3
 			get_color (Point3 _point);
-	}
+	};
 }
 
 #endif
