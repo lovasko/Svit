@@ -4,26 +4,8 @@
 #include "geom/vector.h"
 #include "geom/operations.h"
 
-#include <cmath>
-
 namespace Svit
 {
-	void
-	decompose_float (float _float, int *_integral, float *_fractional, 
-	    bool _abs = true)
-	{
-		float fractional;	
-		float integral;
-
-		fractional = modff(_float, &integral);			
-		
-		if (_abs)
-			fractional = fabs(fractional);
-
-		*_integral = (int)floor(_float);
-		*_fractional = fractional;
-	}
-	
 	template <typename Scalar>
 	Vector<Scalar>
 	lerp_1D (Vector<Scalar>& _a, Vector<Scalar>& _b, Scalar _v)
