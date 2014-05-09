@@ -1,4 +1,5 @@
 #include "texture/perlin_noise.h"
+#include "math/numeric.h"
 #include "math/interpolation.h"
 #include "geom/operations.h"
 
