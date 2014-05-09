@@ -1,4 +1,5 @@
 #include "light/spot.h"
+#include "geom/operations.h"
 
 namespace Svit
 {
@@ -35,7 +36,7 @@ namespace Svit
 			float angular_strength = powf(cos_angle, exp);
 			float distance_weakness = powf(_hit.distance, 2.0f);
 
-			return color * (angluar_weakness / distance_weakness);
+			return color * (angular_strength / distance_weakness);
 		}
 	}
 }
