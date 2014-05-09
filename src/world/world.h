@@ -15,6 +15,12 @@ namespace Svit
 		Node *scene;
 		Camera *camera;
 		std::vector<std::unique_ptr<Light>> lights;
+
+		void
+		add_light (std::unique_ptr<Light> _light)
+		{
+			lights.push_back(std::move(_light));	
+		}
 	};
 }
 
