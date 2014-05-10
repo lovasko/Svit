@@ -37,7 +37,7 @@ namespace Svit
 
 				for (it = _intersections.begin(); it != _intersections.end(); it++)
 				{
-					if (it->t <= 0.0 || it->t >= best->t)
+					if (it->t <= 0.0f || it->t >= best->t)
 						continue;
 
 					best = it;
