@@ -2,7 +2,7 @@
 #define SVIT_INFINITE_PLANE
 
 #include "node/solid/solid.h"
-#include "node/intersection.h"
+#include "node/node.h"
 #include "geom/point.h"
 #include "geom/vector.h"
 #include "geom/ray.h"

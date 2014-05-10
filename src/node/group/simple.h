@@ -3,7 +3,6 @@
 
 #include "node/group/group.h"
 #include "geom/ray.h"
-#include "node/intersection.h"
 
 #include <list>
 
@@ -17,6 +16,9 @@ namespace Svit
 		public:
 			std::list<Intersection>
 			intersect (Ray& _ray);
+
+			void
+			set_material (std::unique_ptr<Material> _material);
 
 			void
 			add (Node& _node);

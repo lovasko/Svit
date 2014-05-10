@@ -2,7 +2,6 @@
 #define SVIT_GROUP
 
 #include "node/node.h"
-#include "node/intersection.h"
 
 namespace Svit
 {
