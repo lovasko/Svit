@@ -97,9 +97,9 @@ namespace Svit
 					for (unsigned x = 0; x < size.x; x++)
 					{
 						Vector3& rgb = (*this)(x, y);
-						row[x*3 + 0] = (png_byte)(rgb.x * 255.0); 
-						row[x*3 + 1] = (png_byte)(rgb.y * 255.0);
-						row[x*3 + 2] = (png_byte)(rgb.z * 255.0);
+						row[x*3 + 0] = (png_byte)((rgb.x > 1.0 ? 1.0 : rgb.x) * 255.0); 
+						row[x*3 + 1] = (png_byte)((rgb.y > 1.0 ? 1.0 : rgb.y) * 255.0); 
+						row[x*3 + 2] = (png_byte)((rgb.z > 1.0 ? 1.0 : rgb.z) * 255.0); 
 					}
 
 					png_write_row(png, row);
