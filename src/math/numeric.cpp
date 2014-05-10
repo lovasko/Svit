@@ -1,5 +1,7 @@
 #include "math/numeric.h"
 
+#include <limits>
+
 namespace Svit
 {
 	void
@@ -16,6 +18,15 @@ namespace Svit
 
 		*_integral = (int)floor(_float);
 		*_fractional = fractional;
+	}
+
+	bool
+	around_zero (float _float)
+	{
+		if (_float > 0.0 && _float < std::numeric_limits<float>::epsilon())
+			return true;
+		else
+			return false;
 	}
 }
 
