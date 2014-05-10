@@ -28,7 +28,7 @@ namespace Svit
 				     best != _intersections.end(); 
 						 best++)
 				{
-					if (best->t > 0.0)
+					if (best->t > 0.0001f)
 						break;
 				}
 
