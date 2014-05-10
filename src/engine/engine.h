@@ -3,7 +3,8 @@
 
 #include "geom/ray.h"
 #include "world/world.h"
-#include "node/intersection.h"
+#include "node/node.h"
+#include "node/solid/solid.h"
 
 #include <list>
 #include <boost/optional.hpp>
