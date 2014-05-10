@@ -26,12 +26,8 @@ namespace Svit
 				return empty;
 			}
 
-			// TODO virtual!
-			void
-			complete_intersection(Intersection *_intersection) 
-			{ 
-				std::cout << "aspon ze takto" << std::endl;
-			}
+			virtual void
+			complete_intersection(Intersection *_intersection) = 0;
 	};
 }
 

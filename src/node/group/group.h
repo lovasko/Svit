@@ -10,11 +10,6 @@ namespace Svit
 		public:
 			virtual void
 			add (Node& _node) = 0;
-
-			// TODO this should be virtual too
-			void
-			complete_intersection (Intersection *_intersection)
-			{ }
 	};
 }
 
