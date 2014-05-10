@@ -4,11 +4,8 @@
 #include "geom/vector.h"
 #include "geom/point.h"
 
-#include <assert.h>
 #include <vector>
 #include <string>
-#include <iostream>
-#include <png.h>
 
 namespace Svit
 {

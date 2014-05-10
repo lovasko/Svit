@@ -1,5 +1,9 @@
 #include "image/image.h"
 
+#include <assert.h>
+#include <iostream>
+#include <png.h>
+
 namespace Svit
 {
 	Vector3& 
