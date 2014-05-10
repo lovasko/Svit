@@ -1,5 +1,5 @@
-#ifndef SVIT_ENGINE_SETTINGS
-#define SVIT_ENGINE_SETTINGS
+#ifndef SVIT_SETTINGS
+#define SVIT_SETTINGS
 
 #include "geom/vector.h"
 #include "geom/rect.h"

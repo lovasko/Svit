@@ -1,5 +1,5 @@
-#ifndef SVIT_X86_GENERAL
-#define SVIT_X86_GENERAL
+#ifndef SVIT_GEOM_OPTIMIZATION_X86_GENERAL
+#define SVIT_GEOM_OPTIMIZATION_X86_GENERAL
 
 	#include <xmmintrin.h>
 

@@ -1,4 +1,3 @@
-// TODO rename this file to ops.h
 #ifndef SVIT_GEOM_OPERATIONS
 #define SVIT_GEOM_OPERATIONS
 

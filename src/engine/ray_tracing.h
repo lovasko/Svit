@@ -1,5 +1,5 @@
-#ifndef SVIT_ENGINE_RAY_TRACING
-#define SVIT_ENGINE_RAY_TRACING
+#ifndef SVIT_RAY_TRACING_ENGINE
+#define SVIT_RAY_TRACING_ENGINE
 
 #include "engine/engine.h"
 

@@ -1,5 +1,5 @@
-#ifndef SVIT_BSPLINE
-#define SVIT_BSPLINE
+#ifndef SVIT_BSPLINE_TRAJECTORY
+#define SVIT_BSPLINE_TRAJECTORY
 
 #include "trajectory/trajectory.h"
 

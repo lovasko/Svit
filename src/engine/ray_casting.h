@@ -1,5 +1,5 @@
-#ifndef SVIT_RAY_CASTING
-#define SVIT_RAY_CASTING
+#ifndef SVIT_RAY_CASTING_ENGINE
+#define SVIT_RAY_CASTING_ENGINE
 
 #include "engine/engine.h"
 

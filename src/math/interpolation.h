@@ -1,5 +1,5 @@
-#ifndef SVIT_MATH
-#define SVIT_MATH
+#ifndef SVIT_MATH_INTERPOLATION
+#define SVIT_MATH_INTERPOLATION
 
 #include "geom/vector.h"
 
