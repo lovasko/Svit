@@ -55,7 +55,7 @@ namespace Svit
 
 	template <typename Scalar>
 	Vector<Scalar>
-	operator-(const Point<Scalar>& a, const Point<Scalar>& b)
+	operator-(const Vector<Scalar>& a, const Vector<Scalar>& b)
 	{
 		return Vector<Scalar>(
 			a.x - b.x, 

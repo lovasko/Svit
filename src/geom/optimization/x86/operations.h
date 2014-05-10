@@ -3,7 +3,6 @@
 
 #include "geom/optimization/x86/general.h"
 #include "geom/optimization/x86/vector.h"
-#include "geom/optimization/x86/point.h"
 
 namespace Svit
 {
@@ -25,14 +24,8 @@ namespace Svit
 		return Vector<float>(_mm_mul_ps(v.v, _mm_set1_ps(s)));
 	}
 
-	inline Point<float> 
-	operator+(const Point<float>& p, const Vector<float>& v)
-	{
-		return Point<float>(_mm_add_ps(p.v, v.v));
-	}
-
 	inline Vector<float>
-	operator-(const Point<float>& a, const Point<float>& b)
+	operator-(const Vector<float>& a, const Vector<float>& b)
 	{
 		return Vector<float>(_mm_sub_ps(a.v, b.v));
 	}
