@@ -11,19 +11,6 @@ namespace Svit
 	class Solid : public Node
 	{
 		public:
-			/*
-			void 
-			add_intersection (float _t, Point3 _point, Solid *who)
-			{
-				Intersection i;
-				i.t = _t;
-				i.node = who;
-				i.point = _point;
-
-				result.push_back(i);
-			}
-			*/
-
 			std::list<Intersection>
 			fail ()
 			{
