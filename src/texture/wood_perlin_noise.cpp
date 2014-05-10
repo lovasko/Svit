@@ -1,6 +1,5 @@
 #include "texture/wood_perlin_noise.h"
 #include "math/interpolation.h"
-#include "geom/operations.h"
 
 namespace Svit
 {

@@ -128,9 +128,6 @@ namespace Svit
 		return v;
 	}
 
-	#if defined(USE_SSE) && defined(__SSE__)
-		#include "geom/optimization/x86/operations.h"
-	#endif
 }
 
 #endif

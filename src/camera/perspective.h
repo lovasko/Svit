@@ -5,7 +5,6 @@
 #include "geom/vector.h"
 #include "geom/point.h"
 #include "geom/rect.h"
-#include "geom/operations.h"
 
 #include <cmath>
 

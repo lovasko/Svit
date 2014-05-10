@@ -1,5 +1,4 @@
 #include "light/point.h"
-#include "geom/operations.h"
 
 #include <cmath>
 

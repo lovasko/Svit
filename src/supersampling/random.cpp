@@ -1,7 +1,5 @@
 #include "supersampling/random.h"
 
-#include "geom/operations.h"
-
 namespace Svit
 {
 	RandomSuperSampling::RandomSuperSampling (bool _adaptive)

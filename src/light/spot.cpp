@@ -1,5 +1,4 @@
 #include "light/spot.h"
-#include "geom/operations.h"
 
 namespace Svit
 {

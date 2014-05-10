@@ -2,7 +2,6 @@
 #define SVIT_MATH
 
 #include "geom/vector.h"
-#include "geom/operations.h"
 
 namespace Svit
 {

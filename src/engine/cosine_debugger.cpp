@@ -1,5 +1,4 @@
 #include "engine/cosine_debugger.h"
-#include "geom/operations.h"
 
 #include <cmath>
 #include <iostream>

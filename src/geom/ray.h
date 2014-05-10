@@ -2,7 +2,6 @@
 #define SVIT_RAY
 
 #include "geom/vector.h"
-#include "geom/operations.h"
 #include "geom/point.h"
 
 namespace Svit

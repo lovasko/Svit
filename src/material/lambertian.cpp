@@ -1,5 +1,4 @@
 #include "material/lambertian.h"
-#include "geom/operations.h"
 
 #include <cmath>
 
