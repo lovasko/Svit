@@ -1,6 +1,7 @@
 #include "node/solid/infinite_plane.h"
 
 #include <iostream>
+#include <string>
 
 namespace Svit
 {
@@ -29,6 +30,15 @@ namespace Svit
 	InfinitePlane::complete_intersection (Intersection *_intersection)
 	{
 		_intersection->normal = normal;
+	}
+
+	void
+	InfinitePlane::dump (const char *_name, unsigned int _level)
+	{
+		std::cout << std::string(' ', _level*2) << _name << " = Infinite Plane" <<
+		    std::endl;
+		point.dump("point", _level+1);
+		normal.dump("normal", _level+1);
 	}
 }
 
