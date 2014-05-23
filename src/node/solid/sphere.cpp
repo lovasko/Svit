@@ -62,5 +62,15 @@ namespace Svit
 	{
 		_intersection->normal = ~(_intersection->point - center);
 	}
+
+	void
+	Sphere::dump (const char *_name, unsigned int _level)
+	{
+		std::cout << std::string(' ', _level*2) << _name << " = Sphere" <<
+		    std::endl;
+		center.dump("center", _level+1);
+		std::cout << std::string(' ', (_level+1)*2)  << "radius = " << radius <<
+		    std::endl;
+	}
 }
 
