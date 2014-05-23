@@ -39,8 +39,8 @@ namespace Svit
 				return fail();
 			}
 
-			double t1 = ( - B + sqrt(discriminant)) / (2 * A);
-			double t2 = ( - B - sqrt(discriminant)) / (2 * A);
+			float t1 = ( - B + sqrt(discriminant)) / (2 * A);
+			float t2 = ( - B - sqrt(discriminant)) / (2 * A);
 			Intersection i1;
 			i1.t = t1;
 			i1.point = _ray(t1);
