@@ -5,25 +5,29 @@
 
 namespace Svit
 {
-	std::list<Intersection>
-	InfinitePlane::intersect (Ray& _ray)
+	boost::optional<Intersection>
+	InfinitePlane::intersect (Ray& _ray, float _best)
 	{
 		std::list<Intersection> result;
 
 		float angle = normal % _ray.direction;
 
 		if (angle == 0.0)
-			return fail();
+			return boost::optional<Intersection>();
 
 		float t = -(normal % (_ray.origin - point))/angle;
+		if (t < _best && t > 0.0f)
+		{
+			Intersection intersection;
+			intersection.t = t;
+			intersection.point = _ray(t);
+			intersection.node = this;
 
-		Intersection intersection;
-		intersection.t = t;
-		intersection.point = _ray(t);
-		intersection.node = this;
-		result.push_back(intersection);
-
-		return result;
+			boost::optional<Intersection> result(intersection);
+			return result;
+		}
+		else
+			return boost::optional<Intersection>();
 	}
 
 	void
