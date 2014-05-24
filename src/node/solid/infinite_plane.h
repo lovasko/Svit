@@ -20,8 +20,8 @@ namespace Svit
 				: point(_point), normal(_normal)
 			{ }
 
-			std::list<Intersection>
-			intersect (Ray& _ray);
+			boost::optional<Intersection>
+			intersect (Ray& _ray, float _best);
 
 			void
 			complete_intersection (Intersection *_intersection);

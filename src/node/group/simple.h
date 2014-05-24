@@ -14,8 +14,8 @@ namespace Svit
 			std::list<Node*> nodes;
 
 		public:
-			std::list<Intersection>
-			intersect (Ray& _ray);
+			boost::optional<Intersection>
+			intersect (Ray& _ray, float _best);
 
 			void
 			set_material (std::unique_ptr<Material> _material);

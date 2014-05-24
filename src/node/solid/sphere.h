@@ -19,8 +19,8 @@ namespace Svit
 				: center(_center), radius(_radius)
 			{ }
 
-			std::list<Intersection>
-			intersect (Ray& _ray);
+			boost::optional<Intersection>
+			intersect (Ray& _ray, float _best);
 
 			void
 			complete_intersection (Intersection *_intersection);

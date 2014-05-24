@@ -6,6 +6,7 @@
 
 #include <list>
 #include <iostream>
+#include <boost/optional.hpp>
 
 namespace Svit
 {
@@ -17,8 +18,8 @@ namespace Svit
 			virtual void
 			set_material (std::unique_ptr<Material> _material) = 0;
 
-			virtual std::list<Intersection>
-			intersect (Ray& _ray) = 0;
+			virtual boost::optional<Intersection>
+			intersect (Ray& _ray, float _best) = 0;
 	};
 
 	class Solid;
