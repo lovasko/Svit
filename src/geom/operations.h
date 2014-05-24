@@ -52,6 +52,18 @@ namespace Svit
 			v.w * s);
 	}
 
+	// TODO make this operation also with x86 optimizations
+	template <typename Scalar> 
+	Vector<Scalar> 
+	operator*(const Vector<Scalar>& a, const Vector<Scalar>& b)
+	{
+		return Vector<Scalar>(
+			a.x * b.x,
+			a.y * b.y,
+			a.z * b.z,
+			a.w * b.w);
+	}
+
 	template <typename Scalar>
 	Vector<Scalar>
 	operator-(const Vector<Scalar>& a, const Vector<Scalar>& b)
