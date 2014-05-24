@@ -17,17 +17,20 @@ namespace Svit
 		// triangles, sharing the same material with copying is insane. 
 	}
 	
-	std::list<Intersection>
-	SimpleGroup::intersect (Ray& _ray)
+	boost::optional<Intersection>
+	SimpleGroup::intersect (Ray& _ray, float _best)
 	{
-		std::list<Intersection> result;
+		float best = _best;
+		boost::optional<Intersection> result;
 
-		std::list<Node*>::iterator it;
-		for (it = nodes.begin(); it != nodes.end(); it++)
+		for (auto node : nodes)
 		{
-			Node *node = *it;
-			std::list<Intersection> node_result = node->intersect(_ray);
-			result.splice(result.end(), node_result);
+			boost::optional<Intersection> i = node->intersect(_ray, best);
+			if (i)
+			{
+				best = i->t;
+				result = i;
+			}
 		}
 
 		return result;
