@@ -2,13 +2,15 @@
 #include "light/light.h"
 #include "math/numeric.h"
 
+#include <numeric>
+
 namespace Svit
 {
 	Vector3
 	RayTracingEngine::get_color (Ray& _ray, World& _world)
 	{
-		std::list<Intersection> intersections = _world.scene->intersect(_ray);
-		boost::optional<Intersection> best = get_best_intersection(intersections);
+		boost::optional<Intersection> best = _world.scene->intersect(_ray,
+		    std::numeric_limits<float>::max());
 
 		if (best)
 		{
@@ -19,24 +21,20 @@ namespace Svit
 			for (auto &light : _world.lights)
 			{
 				LightHit light_hit = light->get_light_hit(i.point);
-				Vector3 norm_hit_dir = ~light_hit.direction;
-				Vector3 neg_norm_hit_dir = !norm_hit_dir;
 
-				Ray shadow_ray(i.point, neg_norm_hit_dir);
+				/* float sgn1 = ~light_hit.direction % ~i.normal; */
+				/* float sgn2 = ~!_ray.direction % ~i.normal; */
+				/* if ((sgn1 < 0.0f && sgn2 > 0.0f) || */ 
+				/*     (sgn1 > 0.0f && sgn2 < 0.0f)) */ 
+				/* 	continue; */
 
-				std::list<Intersection> shadow_intersections =
-				    _world.scene->intersect(shadow_ray);
+				Point3 shadow_point = i.point + (light_hit.direction * 0.0001f);
+				Ray shadow_ray(shadow_point, light_hit.direction);
 
-				boost::optional<Intersection> shadow_best =
-				    get_best_intersection(shadow_intersections);
+				boost::optional<Intersection> shadow =
+				    _world.scene->intersect(shadow_ray, light_hit.distance - 0.0001f);
 
-				float sgn1 = neg_norm_hit_dir % i.normal;
-				float sgn2 = !_ray.direction % i.normal;
-				if ((sgn1 < 0.0 && sgn2 > 0.0) || 
-				    (sgn1 > 0.0 && sgn2 < 0.0)) 
-					continue;
-
-				if (shadow_best && shadow_best->t < light_hit.distance)
+				if (shadow)
 					continue;
 
 				light_component += light->get_intensity(light_hit);
@@ -45,7 +43,7 @@ namespace Svit
 			Vector3 material_component = i.node->material->get_reflectance(i.point, 
 			    i.normal, _ray.direction, !_ray.direction);
 
-			return material_component + light_component;
+			return material_component * light_component;
 		}
 		else
 			return Vector3();
