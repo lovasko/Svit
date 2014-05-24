@@ -1,5 +1,7 @@
 #include "camera/perspective.h"
 #include "engine/cosine_debugger.h"
+#include "engine/ray_casting.h"
+#include "engine/ray_tracing.h"
 #include "geom/rect.h"
 #include "geom/vector.h"
 #include "geom/point.h"
@@ -13,11 +15,22 @@
 #include "supersampling/random.h"
 #include "trajectory/bspline.h"
 #include "world/world.h"
+#include "material/lambertian.h"
+#include "material/phong.h"
+#include "material/mirror.h"
+#include "texture/constant.h"
+#include "texture/checkerboard.h"
+#include "texture/perlin_noise.h"
+#include "texture/wood_perlin_noise.h"
+#include "light/point.h"
+#include "light/directional.h"
+#include "light/ambient.h"
 
 #include <iostream>
 #include <sstream>
 #include <cmath>
 #include <thread>
+#include <memory>
 
 using namespace Svit;
 
@@ -29,24 +42,38 @@ main (void)
 	settings.area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
 	settings.max_thread_count = std::thread::hardware_concurrency();
 	settings.tile_size = Vector2i(100, 100);
-	settings.max_sample_count = 4;
-	settings.adaptive_sample_step = 2;
+	settings.max_sample_count = 750;
+	settings.adaptive_sample_step = 1000;
 
 	SimpleGroup scene;
 
-	InfinitePlane infinite_plane(Point3(0.0, 0.0, 0.0), Vector3(0.0, 1.0, 0.0));
-	scene.add(infinite_plane);
+	InfinitePlane infinite_plane(Point3(0.0, 0.02, 0.0), Vector3(0.0, 1.0, 0.0));
+	CheckerboardTexture *checker = new CheckerboardTexture(Vector3(0.5f, 0.5f,
+	    0.5f), Vector3(1.0, 1.0, 1.0), 0.25);
 
-	Sphere* spheres[100];
-	int i = 0;
+	std::unique_ptr<Texture> ct(checker);
+	std::unique_ptr<Material> mat(new LambertianMaterial(std::move(ct)));
+	infinite_plane.set_material(std::move(mat));
+scene.add(infinite_plane);
 
-	for (float x = -3.0; x < 3.0; x += 0.5)
-	for (float z = 0.0; z < 6.0; z += 0.5)
-	{
-		spheres[i] = new Sphere(Point3(x, 0.5, z), (float)(rand() % 15)/100.0);
-		scene.add(*spheres[i]);
-		i++;
-	}
+	WoodPerlinNoiseTexture *wood_texture = new WoodPerlinNoiseTexture(
+			Vector3(149.0f/255.0f, 69.0f/255.0f, 53.0f/255.0f), Vector3(237.0f/255.0f,
+			201.0f/255.0f, 175.0f/255.0f));
+	wood_texture->add_octave(1.0, 3.0);
+
+	ConstantTexture *white_texture = new ConstantTexture(Vector3(1.0, 1.0, 1.0));
+
+	std::unique_ptr<Texture> wood_sphere_tex(wood_texture);
+	std::unique_ptr<Material> wood_sphere_mat(new LambertianMaterial(
+	    std::move(wood_sphere_tex)));
+	Sphere wood_sphere(Point3(-0.9, 0.35, 0.0), 0.35);
+	wood_sphere.set_material(std::move(wood_sphere_mat));
+	scene.add(wood_sphere);
+
+	std::unique_ptr<Material> mirror_material(new MirrorMaterial(0.0f, 20.0f));
+	Sphere mirror_sphere(Point3(0.0f, 0.35f, 2.0f), 0.35f);
+	mirror_sphere.set_material(std::move(mirror_material));
+	//scene.add(mirror_sphere);
 
 	PerspectiveCamera camera(
 		Point3(0.0, 0.75, -2.0),
@@ -59,52 +86,25 @@ main (void)
 	world.scene = &scene;
 	world.camera = &camera;
 
-	CosineDebuggerEngine engine;
+	std::unique_ptr<Light> light1(new PointLight(Point3(0.0, 1.5, 0.0),
+	   Vector3(1.0f, 1.0f, 1.0f) * 3.0f));
+	world.add_light(std::move(light1));
+
+	std::unique_ptr<Light> ambient_light(new AmbientLight(
+	    Vector3(1.0f, 1.0f, 1.0f)));
+	world.add_light(std::move(ambient_light));
+
+	/* std::unique_ptr<Light> light2(new DirectionalLight(Vector3(0.0, -1.0, 1.0), */
+	/*     Vector3(3.0, 3.0, 3.0) * 0.1f)); */
+	/* world.add_light(std::move(light2)); */
+
+	RayTracingEngine engine;
 	ParallelRenderer renderer;
-	//SerialRenderer renderer;
 	RandomSuperSampling super_sampling(true);
 
-
-	BSplineTrajectory trajectory(true);
-	trajectory.add_point(Point3(0.0f, 0.0f, 0.0f));
-	trajectory.add_point(Point3(-3.0f, 3.0f, 3.0f));
-	trajectory.add_point(Point3(0.0f, 6.0f, 6.0f));
-	trajectory.add_point(Point3(3.0f, 3.0f, 3.0f));
-
-	unsigned int FPS = 25;
-	float animation_length = 10.0;
-
-	unsigned int frame_count = FPS * (int)(animation_length);
-	for (int frame = 0; frame < frame_count; frame++) 
-	{
-		camera.position = trajectory.evaluate(4.0f / (float)frame_count *
-		    (float)frame) + Vector3(0.0, -0.25, -3.0);
-		camera.look_at(Point3(0.0, 0.0, 3.0));
-
-		Point3 now = trajectory.evaluate(4.0f / (float)frame_count *
-		    (float)frame) + Vector3(0.0, -0.25, -3.0);
-
-		Point3 next = trajectory.evaluate(4.0f / (float)frame_count *
-		    (((float)frame) + 1.0f)) + Vector3(0.0, -0.25, -3.0);
-
-		Vector3 left = ~(next - now);
-		camera.up = left & camera.forward;
-
-		camera.position.dump("position");
-		camera.forward.dump("forward");
-		camera.up.dump("up");
-
-		Image image = renderer.render(world, settings, engine, super_sampling);
-
-		std::ostringstream ss;
-		ss << std::setw(3) << std::setfill('0') << frame;
-	  std::string frame_string(ss.str());
-
-		image.write(std::string("output") + frame_string + std::string(".png"));
-
-		std::cout << "Frame " << frame << "/" << frame_count << " done." <<
-		    std::endl;
-	}
+	Image image = renderer.render(world, settings, engine, super_sampling);
+	image.write(std::string("output.png"));
 
 	return 0;
 }
+
