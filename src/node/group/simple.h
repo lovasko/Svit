@@ -22,6 +22,9 @@ namespace Svit
 
 			void
 			add (Node& _node);
+
+			void
+			finish () { }
 	};
 }
 

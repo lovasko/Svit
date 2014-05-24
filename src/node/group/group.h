@@ -10,6 +10,9 @@ namespace Svit
 		public:
 			virtual void
 			add (Node& _node) = 0;
+
+			virtual void
+			finish () = 0;
 	};
 }
 
