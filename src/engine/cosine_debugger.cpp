@@ -1,15 +1,15 @@
 #include "engine/cosine_debugger.h"
 
 #include <cmath>
-#include <iostream>
+#include <numeric>
 
 namespace Svit
 {
 	Vector3
 	CosineDebuggerEngine::get_color (Ray& _ray, World& _world)
 	{
-		std::list<Intersection> intersections = _world.scene->intersect(_ray);
-		boost::optional<Intersection> best = get_best_intersection(intersections);
+		boost::optional<Intersection> best = _world.scene->intersect(_ray,
+		    std::numeric_limits<float>::max());
 
 		if (best)
 		{

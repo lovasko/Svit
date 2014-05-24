@@ -1,12 +1,14 @@
 #include "engine/ray_casting.h"
 
+#include <numeric>
+
 namespace Svit
 {
 	Vector3
 	RayCastingEngine::get_color (Ray& _ray, World& _world)
 	{
-		std::list<Intersection> intersections = _world.scene->intersect(_ray);
-		boost::optional<Intersection> best = get_best_intersection(intersections);
+		boost::optional<Intersection> best = _world.scene->intersect(_ray,
+		    std::numeric_limits<float>::max());
 
 		if (best)
 		{
