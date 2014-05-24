@@ -9,7 +9,7 @@ namespace Svit
 	class DirectionalLight : public Light
 	{
 		private:
-			Vector3 direction;
+			Vector3 norm_neg_direction;
 			Vector3 color;
 
 		public:

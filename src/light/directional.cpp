@@ -6,7 +6,7 @@ namespace Svit
 {
 	DirectionalLight::DirectionalLight (Vector3 _direction, Vector3 _color)
 	{
-		direction = _direction;		
+		norm_neg_direction = ~!_direction;		
 		color = _color;
 	}
 
@@ -14,7 +14,7 @@ namespace Svit
 	DirectionalLight::get_light_hit (Point3 _point)
 	{
 		LightHit light_hit;
-		light_hit.direction = direction;
+		light_hit.direction = norm_neg_direction;
 		light_hit.distance = std::numeric_limits<float>::max();
 
 		return light_hit; 
