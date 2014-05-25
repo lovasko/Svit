@@ -3,9 +3,9 @@
 namespace Svit
 {
 	void 
-	SimpleGroup::add (Node& _node)
+	SimpleGroup::add (Node *_node)
 	{
-		nodes.push_back(&_node);
+		nodes.push_back(_node);
 	}
 
 	void
