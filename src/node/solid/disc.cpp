@@ -7,7 +7,7 @@ namespace Svit
 		point = _point;
 		normal = _normal;
 		radius = _radius;
-		radius = radius * radius;
+		radius2 = radius * radius;
 	}
 
 	boost::optional<Intersection>
