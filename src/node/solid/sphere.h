@@ -26,7 +26,7 @@ namespace Svit
 			complete_intersection (Intersection *_intersection);
 
 			void
-			dump(const char *_name, unsigned int _level = 0);
+			dump (const char *_name, unsigned int _level = 0);
 	};
 }
 
