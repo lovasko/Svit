@@ -70,6 +70,7 @@ namespace Svit
 	typedef Vector<float> Vector3;
 	typedef Vector<float> Vector2;
 	typedef Vector<int> Vector2i;
+	typedef Vector<int> Vector3i;
 }
 
 #include "geom/operations.h"
