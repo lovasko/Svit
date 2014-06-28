@@ -11,7 +11,7 @@ namespace Svit
 	}
 
 	boost::optional<Intersection>
-	intersect (Ray& _ray, float _best)
+	Triangle::intersect (Ray& _ray, float _best)
 	{
 		float d = _ray.direction % normal;
 		if (d == 0.0f)
