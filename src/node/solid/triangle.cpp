@@ -5,7 +5,7 @@ namespace Svit
 	Triangle::Triangle (Point3 _p1, Point3 _p2, Point3 _p3)
 	  : p1(_p1), p2(_p2), p3(_p3)
 	{
-		Vector3 e1= p2 - p1;
+		Vector3 e1 = p2 - p1;
 		Vector3 e2 = p3 - p1;
 		normal = ~(~e1 & ~e2);
 	}
