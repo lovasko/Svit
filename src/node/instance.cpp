@@ -5,37 +5,44 @@ namespace Svit
 	Instance::Instance (Node *_node)
 	{
 		node = _node;
+		matrix = Matrix44::identity();
+		recompute_inverse();
 	}
 
 	boost::optional<Intersection>
 	Instance::intersect (Ray& _ray, float _best)
 	{
-		Ray new_ray(_ray.origin * matrix, ~(_ray.direction * matrix));
+		_ray.origin.w = 1.0f;
+		_ray.direction.w = 0.0f;
+		Ray new_ray(inverse * _ray.origin, ~(inverse * _ray.direction));
 
-		float original_length = length(_ray.direction);
-		float new_length = length(new_ray.direction);
-		float factor = new_length / original_length;
+		new_ray.origin.w = 0.0f;
+		boost::optional<Intersection> node_intersection = node->intersect(new_ray, 
+		    _best);
 
-		boost::optional<Intersection intersection = node->intersect(new_ray);
-		if (intersection)
+		if (node_intersection)
 		{
-			float t = intersection.t / factor;
-			if (t > 0.0f && t < _best)
-			{
-				boost::optional<Intersection> result;
-				result.t = t;
-				result.node = node;
-				result.point = _ray(t);
-			}
-			else
-				return boost::optional<Intersection>();
+			Point3 hit_point = matrix * node_intersection->point;
+			Intersection intersection;
+			intersection.t = node_intersection->t;
+			intersection.node = node_intersection->node;
+			intersection.point = hit_point;
+
+			boost::optional<Intersection> result(intersection);
+			return result;
 		}
 		else
 			return boost::optional<Intersection>();
 	}
 
 	void
-	Instance::combine (Matrix& _transformation)
+	Instance::set_material (std::unique_ptr<Material> _material)
+	{
+	
+	}
+
+	void
+	Instance::combine (Matrix44& _transformation)
 	{
 		matrix = _transformation * matrix;
 	}
@@ -49,13 +56,13 @@ namespace Svit
 	void
 	Instance::reset ()
 	{
-		matrix = Matrix::identity();
+		matrix = Matrix44::identity();
 	}
 
 	void 
-	Instance::translate (Vector3& _translation)
+	Instance::translate (Vector3 const& _translation)
 	{
-		Matrix translation_matrix(
+		Matrix44 translation_matrix(
 			Vector4(1.0f, 0.0f, 0.0f, _translation.x),
 			Vector4(0.0f, 1.0f, 0.0f, _translation.y),
 			Vector4(0.0f, 0.0f, 1.0f, _translation.z),
@@ -85,7 +92,7 @@ namespace Svit
 		float lmi = l*m*i;
 		float lni = l*n*i;
 
-		Matrix rotation_matrix(
+		Matrix44 rotation_matrix(
 			Vector4(lli + c,  lmi - ns, lni + ms, 0.0f),
 			Vector4(lmi + ns, mmi + c,  nmi - ls, 0.0f),
 			Vector4(lni - ms, nmi + ls, nni + c,  0.0f),
@@ -102,9 +109,9 @@ namespace Svit
 	}
 
 	void 
-	Instance::scale (Vector3& _scale)
+	Instance::scale (Vector3 const& _scale)
 	{
-		Matrix scaling_matrix(
+		Matrix44 scaling_matrix(
 			Vector4(_scale.x, 0.0f, 0.0f, 0.0f),
 			Vector4(0.0f, _scale.y, 0.0f, 0.0f),
 			Vector4(0.0f, 0.0f, _scale.z, 0.0f),
@@ -115,7 +122,7 @@ namespace Svit
 	}
 
 	void 
-	Instance::set_matrix (Matrix& _matrix)
+	Instance::set_matrix (Matrix44& _matrix)
 	{
 		matrix = _matrix;
 		recompute_inverse();

@@ -10,11 +10,11 @@ namespace Svit
 	{
 		private:
 			Node *node;
-			Matrix matrix;
-			Matrix inverse;
+			Matrix44 matrix;
+			Matrix44 inverse;
 
 			void
-			combine (Matrix& _transformation);
+			combine (Matrix44& _transformation);
 
 			void
 			recompute_inverse ();
@@ -26,19 +26,25 @@ namespace Svit
 			intersect (Ray& _ray, float _best);
 
 			void
+			set_material (std::unique_ptr<Material> _material);
+
+			void
 			reset ();
 
 			void
-			translate (Vector3& _translation);
+			translate (Vector3 const& _translation);
 
 			void
 			rotate (Vector3& _axis, float _angle);
 
 			void
-			scale (Vector3& _scale);
+			scale (Vector3 const& _scale);
 
 			void
 			scale (float _scale);
+
+			void 
+			set_matrix (Matrix44& _matrix);
 	};
 }
 
