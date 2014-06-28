@@ -14,7 +14,7 @@ namespace Svit
 
 			Ray () { } 
 
-			Ray (Point3& _origin, Vector3& _direction)
+			Ray (Point3 const& _origin, Vector3 const& _direction)
 				: origin(_origin), direction(_direction)
 			{ }
 
