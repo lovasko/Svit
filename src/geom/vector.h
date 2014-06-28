@@ -73,8 +73,6 @@ namespace Svit
 	typedef Vector<int> Vector3i;
 }
 
-#include "geom/operations.h"
-
 #if defined(USE_SSE) && defined(__SSE__)
 	#include "geom/optimization/x86/vector.h"
 #endif
@@ -83,6 +81,7 @@ namespace Svit
 	#include "geom/optimization/x86/operations.h"
 #endif
 
+#include "geom/operations.h"
 
 #endif
 
