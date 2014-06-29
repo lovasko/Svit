@@ -35,7 +35,7 @@ namespace Svit
 			translate (Vector3 const& _translation);
 
 			void
-			rotate (Vector3& _axis, float _angle);
+			rotate (Vector3 const& _axis, float _angle);
 
 			void
 			scale (Vector3 const& _scale);

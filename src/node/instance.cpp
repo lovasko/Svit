@@ -73,7 +73,7 @@ namespace Svit
 	}
 
 	void 
-	Instance::rotate (Vector3& _axis, float _angle)
+	Instance::rotate (Vector3 const& _axis, float _angle)
 	{
 		Vector3 unit = ~_axis;		
 		float s = sinf(_angle);
