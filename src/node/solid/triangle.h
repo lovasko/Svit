@@ -13,6 +13,8 @@ namespace Svit
 	{
 		private:
 			Vector3 normal;			
+			Vector e1;
+			Vector e2;
 
 		public:
 			Point3 p1;
