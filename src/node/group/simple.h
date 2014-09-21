@@ -21,7 +21,7 @@ namespace Svit
 			set_material (std::unique_ptr<Material> _material);
 
 			void
-			add (Node *_node);
+			add (Node* _node);
 
 			void
 			finish () { }
