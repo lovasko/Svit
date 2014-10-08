@@ -2,6 +2,7 @@
 #define SVIT_NODE
 
 #include "geom/ray.h"
+#include "geom/bounding_box.h"
 #include "material/material.h"
 
 #include <list>
@@ -15,6 +16,8 @@ namespace Svit
 	class Node
 	{
 		public:
+			BoundingBox bounding_box;
+
 			virtual void
 			set_material (std::unique_ptr<Material> _material) = 0;
 
