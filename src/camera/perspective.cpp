@@ -33,12 +33,5 @@ namespace Svit
 
 		return ray;
 	}
-
-	void
-	PerspectiveCamera::look_at (Point3 _dest)
-	{
-		forward = ~(_dest - position);
-		recompute();
-	}
 }
 

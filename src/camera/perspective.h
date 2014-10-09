@@ -31,9 +31,6 @@ namespace Svit
 
 			Ray
 			get_ray (float _x, float _y);
-
-			void
-			look_at (Point3 _dest);
 	};
 }
 
