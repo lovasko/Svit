@@ -1,5 +1,5 @@
-cflags = -Isrc -I/opt/local/include/ -pthread -std=c++11 -O3 -Wall
-ldflags = -L/opt/local/lib -lpng
+cflags = -Isrc -I/usr/local/include/ -pthread -std=c++11 -O3 -Wall
+ldflags = -L/usr/local/lib -lpng
 macros = -DUSE_SSE
 
 rule compile
@@ -28,12 +28,17 @@ build obj/node/group/simple.o: compile src/node/group/simple.cpp
 
 # solid
 build obj/node/solid/sphere.o: compile src/node/solid/sphere.cpp
+build obj/node/solid/triangle.o: compile src/node/solid/triangle.cpp
 
 # image
 build obj/image/image.o: compile src/image/image.cpp
+
+# model
+build obj/model/model.o: compile src/model/model.cpp
+build obj/model/obj.o: compile src/model/obj.cpp
 
 # main
 build obj/main.o: compile src/main.cpp
 
 # final link
-build bin/svit: link obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o 
+build bin/svit: link obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o 
