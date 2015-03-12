@@ -39,7 +39,11 @@ namespace Svit
 		boost::split(line_parts, pure_line, boost::is_any_of(" "));
 
 		if (line_parts.size() < 3 || line_parts.size() > 4)
+		{
+			std::cerr << "Not enough line parts in '" << pure_line << "'"
+			          << std::endl;
 			return false;
+		}
 
 		for (unsigned int i = 0; i < line_parts.size(); i++)
 			boost::trim(line_parts[i]);
@@ -56,10 +60,13 @@ namespace Svit
 			}
 			catch (const std::invalid_argument& invalid_argument)
 			{
+				std::cerr << "Invalid argument while parsing '" << pure_line << "'" 
+				          << std::endl;
 				return false;
 			}
 			catch (const std::out_of_range& out_of_range)
 			{
+				std::cerr << "Out of range in '" << pure_line << "'" << std::endl;
 				return false;
 			}
 
@@ -75,7 +82,11 @@ namespace Svit
 			w = std::stof(line_parts[3]);
 
 			if (w == 0.0f)
+			{
+				std::cerr << "Last line part is 0.0 in '" << pure_line << "'"
+				          << std::endl;
 				return false;
+			}
 
 			vertices.push_back(Point3(x/w, y/w, z/w));
 			return true;
@@ -94,7 +105,11 @@ namespace Svit
 		boost::split(line_parts, pure_line, boost::is_any_of(" "));
 
 		if (line_parts.size() < 3 || line_parts.size() > 4)
+		{
+			std::cerr << "Wrong line parts count is '" << line_parts.size() << "'"
+			          << std::endl;
 			return false;
+		}
 
 		for (unsigned int i = 0; i < line_parts.size(); i++)
 			boost::trim(line_parts[i]);
@@ -119,7 +134,11 @@ namespace Svit
 			w = std::stof(line_parts[3]);
 
 			if (w == 0.0f)
+			{
+				std::cerr << "Last line part is 0.0 in '" << pure_line << "'"
+				          << std::endl;
 				return false;
+			}
 
 			normals.push_back(Point3(x/w, y/w, z/w));
 			return true;
@@ -131,6 +150,7 @@ namespace Svit
 	bool
 	ObjModel::parse_tex_vertex (std::string& _line)
 	{
+		std::cout << _line << std::endl;
 		std::vector<std::string> line_parts;
 		std::string pure_line = _line.substr(3);
 
@@ -138,7 +158,11 @@ namespace Svit
 		boost::split(line_parts, pure_line, boost::is_any_of(" "));
 
 		if (line_parts.size() != 2)
+		{
+			std::cerr << "Wrong line parts count in '" << pure_line << "'" 
+			          << std::endl;
 			return false;
+		}
 
 		float u, v;
 
@@ -160,7 +184,11 @@ namespace Svit
 		    boost::token_compress_on);
 
 		if (line_parts.size() < 3)
+		{
+			std::cerr << "Not enough elements while parsing face '" << _line << "'"
+			          << std::endl;
 			return false;
+		}
 
 		for (unsigned int i = 0; i < line_parts.size(); i++)
 			boost::trim(line_parts[i]);
@@ -175,7 +203,11 @@ namespace Svit
 			boost::split(vertex_parts, line_parts[i], boost::is_any_of("/"));
 
 			if (vertex_parts.size() < 1 || vertex_parts.size() > 3)
+			{
+				std::cerr << "Not enough vertex parts in '" << line_parts[i] << "'"
+				          << std::endl;
 				return false;
+			}
 
 			if (vertex_parts.size() == 1)
 			{
@@ -247,12 +279,17 @@ namespace Svit
 	{
 		std::ifstream input(_filename, std::ifstream::in);
 		if (!input)
+		{
+			std::cerr << "Unable to open the file '" << _filename << "'" 
+			          << std::endl;
 			return false;
+		}
 
 		std::string line;
 		while (std::getline(input, line))
 		{
 			line = remove_commentary(line);	
+			boost::trim(line);
 
 			ObjInstruction instruction = get_instruction(line);
 			switch (instruction)
