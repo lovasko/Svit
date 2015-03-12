@@ -1,11 +1,11 @@
-#ifndef SVIT_OBJ
-#define SVIT_OBJ
-
-#include "model/model.h"
-#include "geom/vector.h"
-#include "geom/point.h"
+#ifndef SVIT_MODEL_OBJ_H
+#define SVIT_MODEL_OBJ_H
 
 #include <vector>
+
+#include "geom/point.h"
+#include "geom/vector.h"
+#include "model/model.h"
 
 namespace Svit
 {
@@ -79,8 +79,9 @@ namespace Svit
 			parse_material_library (std::string& _line);
 
 		public:
-			ObjModel () { }
 			std::vector<Point3> vertices;
+
+			ObjModel ();
 
 			bool
 			load (std::string _filename);

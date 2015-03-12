@@ -1,16 +1,19 @@
-#include "model/obj.h"
-#include "node/solid/triangle.h"
-
+#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/split.hpp>
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <boost/algorithm/string.hpp>
-#include <boost/algorithm/string/split.hpp>
+
+#include "model/obj.h"
+#include "node/solid/triangle.h"
 
 namespace Svit
 {
+	ObjModel::ObjModel ()
+	{ }
+
 	std::string
-	ObjModel::remove_commentary (std::string &_line)
+	ObjModel::remove_commentary (std::string& _line)
 	{
 		return _line.substr(0, _line.find('#'));
 	}
@@ -268,9 +271,9 @@ namespace Svit
 	}
 
 	bool
-	ObjModel::parse_material_library (std::string& line)
+	ObjModel::parse_material_library (std::string& _line)
 	{
-		material_libraries.push_back(line.substr(7));
+		material_libraries.push_back(_line.substr(7));
 		return true;
 	}
 	

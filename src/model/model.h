@@ -1,10 +1,10 @@
-#ifndef SVIT_MODEL
-#define SVIT_MODEL
-
-#include "node/solid/solid.h"
-#include "node/group/group.h"
+#ifndef SVIT_MODEL_MODEL_H
+#define SVIT_MODEL_MODEL_H
 
 #include <string>
+
+#include "node/group/group.h"
+#include "node/solid/solid.h"
 
 namespace Svit
 {
@@ -17,7 +17,7 @@ namespace Svit
 			load (std::string _filename) = 0;
 
 			virtual void
-			add_to_group (Group& group);
+			add_to_group (Group& _group);
 	};
 }
 

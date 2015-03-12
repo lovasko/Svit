@@ -1,12 +1,12 @@
-#include "model.h"
+#include "model/model.h"
 
 namespace Svit
 {
 	void
-	Model::add_to_group (Group& group)
+	Model::add_to_group (Group& _group)
 	{
 		for (auto solid : solids)
-			group.add(solid);
+			_group.add(solid);
 	}
 }
 
