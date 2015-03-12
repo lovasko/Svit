@@ -4,11 +4,11 @@ namespace Svit
 {
 	PerspectiveCamera::PerspectiveCamera (Point3 _position, Vector3 _forward, 
 	    Vector3 _up, float _aspect_ratio, float _horizontal_angle)
-		: position(_position), 
-			forward(~_forward), 
-			up(~_up), 
+		: horizontal_angle(_horizontal_angle),
 			aspect_ratio(_aspect_ratio),
-			horizontal_angle(_horizontal_angle)
+			position(_position),
+			up(~_up), 
+			forward(~_forward)
 	{
 		recompute();
 	}

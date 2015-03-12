@@ -28,11 +28,11 @@ namespace Svit
 			{ }
 
 			BoundingBox (Point3 _min, Point3 _max)
-			 : size_type(BOUNDED), min(_min), max(_max)
+			 : min(_min), max(_max), size_type(BOUNDED)
 			{ }
 
 			BoundingBox (SizeType _size_type)
-			 : size_type(_size_type), min(Point3()), max(Point3())
+			 : min(Point3()), max(Point3()), size_type(_size_type)
 			{ }
 
 			void
