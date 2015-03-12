@@ -1,3 +1,5 @@
+#include <cmath>
+
 #include "camera/perspective.h"
 
 namespace Svit

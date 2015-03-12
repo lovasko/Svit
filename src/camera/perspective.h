@@ -1,12 +1,10 @@
-#ifndef SVIT_PERSPECTIVE_CAMERA
-#define SVIT_PERSPECTIVE_CAMERA
+#ifndef SVIT_CAMERA_PERSPECTIVE_H
+#define SVIT_CAMERA_PERSPECTIVE_H
 
 #include "camera/camera.h"
-#include "geom/vector.h"
 #include "geom/point.h"
 #include "geom/rect.h"
-
-#include <cmath>
+#include "geom/vector.h"
 
 namespace Svit
 {
