@@ -1,11 +1,11 @@
-#ifndef SVIT_GEOM_OPERATIONS
-#define SVIT_GEOM_OPERATIONS
-
-#include "geom/vector.h"
-#include "geom/point.h"
-#include "geom/matrix.h"
+#ifndef SVIT_GEOM_OPERATIONS_H
+#define SVIT_GEOM_OPERATIONS_H
 
 #include <cmath>
+
+#include "geom/matrix.h"
+#include "geom/point.h"
+#include "geom/vector.h"
 
 namespace Svit
 {

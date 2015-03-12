@@ -1,5 +1,5 @@
-#ifndef SVIT_MATRIX
-#define SVIT_MATRIX
+#ifndef SVIT_GEOM_MATRIX_H
+#define SVIT_GEOM_MATRIX_H
 
 #include "geom/vector.h"
 

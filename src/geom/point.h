@@ -1,5 +1,5 @@
-#ifndef SVIT_POINT
-#define SVIT_POINT
+#ifndef SVIT_GEOM_POINT_H
+#define SVIT_GEOM_POINT_H
 
 #include "geom/vector.h"
 
