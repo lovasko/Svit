@@ -22,8 +22,6 @@ namespace Svit
 				this->adaptive = other.adaptive;	
 			}
 
-
-
 			Vector2
 			next_sample (int _x, int _y);
 
