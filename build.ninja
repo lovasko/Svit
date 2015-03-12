@@ -15,6 +15,10 @@ build obj/camera/perspective.o: compile src/camera/perspective.cpp
 build obj/engine/engine.o: compile src/engine/engine.cpp
 build obj/engine/cosine_debugger.o: compile src/engine/cosine_debugger.cpp
 
+# geom
+build obj/geom/ray.o: compile src/geom/ray.cpp
+build obj/geom/rectangle.o: compile src/geom/rectangle.cpp
+
 # renderer
 build obj/renderer/renderer.o: compile src/renderer/renderer.cpp
 build obj/renderer/settings.o: compile src/renderer/settings.cpp
@@ -44,4 +48,4 @@ build obj/model/obj.o: compile src/model/obj.cpp
 build obj/main.o: compile src/main.cpp
 
 # final link
-build bin/svit: link obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o 
+build bin/svit: link obj/geom/ray.o obj/geom/rectangle.o obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o 
