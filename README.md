@@ -34,7 +34,9 @@ Intermediate object files produced during build are stored here.
 Source files for the raytracer are stored here.
 
 ## Dependencies
-### libpng
+#### libpng >= 1.6.16
+This depedency can be removed by removing the `-lpng` and `-DUSE_PNG` options
+from the compilation variables in the `build.ninja` file.
 
 ## Author
 Daniel Lovasko lovasko@freebsd.org
