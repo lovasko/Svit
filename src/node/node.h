@@ -3,7 +3,6 @@
 
 #include "geom/ray.h"
 #include "geom/bounding_box.h"
-#include "material/material.h"
 
 #include <list>
 #include <iostream>
@@ -17,9 +16,6 @@ namespace Svit
 	{
 		public:
 			BoundingBox bounding_box;
-
-			virtual void
-			set_material (std::unique_ptr<Material> _material) = 0;
 
 			virtual boost::optional<Intersection>
 			intersect (Ray& _ray, float _best) = 0;

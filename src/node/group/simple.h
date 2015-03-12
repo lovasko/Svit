@@ -18,9 +18,6 @@ namespace Svit
 			intersect (Ray& _ray, float _best);
 
 			void
-			set_material (std::unique_ptr<Material> _material);
-
-			void
 			add (Node* _node);
 
 			void

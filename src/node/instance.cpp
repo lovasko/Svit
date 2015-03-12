@@ -36,12 +36,6 @@ namespace Svit
 	}
 
 	void
-	Instance::set_material (std::unique_ptr<Material> _material)
-	{
-	
-	}
-
-	void
 	Instance::combine (Matrix44& _transformation)
 	{
 		matrix = _transformation * matrix;
