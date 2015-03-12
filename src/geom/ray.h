@@ -1,8 +1,8 @@
-#ifndef SVIT_RAY
-#define SVIT_RAY
+#ifndef SVIT_GEOM_RAY_H
+#define SVIT_GEOM_RAY_H
 
-#include "geom/vector.h"
 #include "geom/point.h"
+#include "geom/vector.h"
 
 namespace Svit
 {
@@ -12,26 +12,15 @@ namespace Svit
 			Point3 origin;
 			Vector3 direction;
 
-			Ray () { } 
+			Ray ();
 
-			Ray (Point3 const& _origin, Vector3 const& _direction)
-				: origin(_origin), direction(_direction)
-			{ }
+			Ray (Point3 const& _origin, Vector3 const& _direction);
 
 			Point3 
-			operator() (float _time) const
-			{
-				return origin + direction * _time;
-			}
+			operator() (float _time) const;
 
 			void
-			dump (const char *name, unsigned int level = 0)
-			{
-				std::string indentation(level*2, ' ');
-				std::cout << indentation << name << " = Ray" << std::endl;
-				origin.dump("origin", level+1);
-				direction.dump("direction", level+1);
-			}
+			dump (const char *name, unsigned int level = 0);
 	};
 }
 
