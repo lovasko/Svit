@@ -1,11 +1,11 @@
-#ifndef SVIT_RENDERER
-#define SVIT_RENDERER
+#ifndef SVIT_RENDERER_RENDERER_H
+#define SVIT_RENDERER_RENDERER_H
 
-#include "image/image.h"
-#include "world/world.h"
 #include "engine/engine.h"
+#include "image/image.h"
 #include "renderer/settings.h"
 #include "supersampling/supersampling.h"
+#include "world/world.h"
 
 namespace Svit
 {
@@ -17,10 +17,7 @@ namespace Svit
 			SuperSampling& _super_sampling) = 0;
 
 			float 
-			compute_normalized_coordinate (float value, float max_value)
-			{
-				return (((value + 0.5f)/max_value)*2.0f)-1.0f;
-			}
+			compute_normalized_coordinate (float _value, float _max_value);
 	};
 }
 
