@@ -1,11 +1,11 @@
-#ifndef SVIT_BOUNDING_BOX
-#define SVIT_BOUNDING_BOX
+#ifndef SVIT_GEOM_BOUNDING_BOX_H
+#define SVIT_GEOM_BOUNDING_BOX_H
+
+#include <boost/optional.hpp>
+#include <tuple>
 
 #include "geom/point.h"
 #include "geom/ray.h"
-
-#include <tuple>
-#include <boost/optional.hpp>
 
 namespace Svit
 {

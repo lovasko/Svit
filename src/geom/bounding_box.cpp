@@ -1,8 +1,8 @@
-#include "geom/bounding_box.h"
-
 #include <cmath>
 #include <limits>
 #include <utility>
+
+#include "geom/bounding_box.h"
 
 namespace Svit
 {
