@@ -1,5 +1,5 @@
-#ifndef SVIT_GEOM_OPTIMIZATION_X86_OPERATIONS
-#define SVIT_GEOM_OPTIMIZATION_X86_OPERATIONS
+#ifndef SVIT_GEOM_OPTIMIZATION_X86_OPERATIONS_H
+#define SVIT_GEOM_OPTIMIZATION_X86_OPERATIONS_H
 
 #include "geom/optimization/x86/general.h"
 #include "geom/optimization/x86/vector.h"

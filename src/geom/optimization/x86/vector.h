@@ -1,12 +1,13 @@
-#ifndef SVIT_X86_VECTOR
-#define SVIT_X86_VECTOR
+#ifndef SVIT_GEOM_OPTIMIZATION_X86_VECTOR_H
+#define SVIT_GEOM_OPTIMIZATION_X86_VECTOR_H
 
-#include "geom/optimization/x86/general.h"
-
-#include <assert.h>
 #include <stdexcept>
 #include <iostream>
 #include <iomanip>
+
+#include <assert.h>
+
+#include "geom/optimization/x86/general.h"
 
 namespace Svit
 {
