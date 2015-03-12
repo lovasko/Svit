@@ -9,8 +9,8 @@ C++11 raytracer
 
 ## Build
 ### Compilation options
-#### USE_SSE
-#### PNG
+##### USE_SSE
+##### USE_PNG
 
 ### Ninja
 ```
@@ -18,11 +18,20 @@ $ ninja
 ```
 
 ## Directories
-### `src`
-### `doc`
-### `img`
-### `obj`
 ### `bin`
+The final raytracer binary `svit` is stored here.
+
+### `doc`
+Documentation in Markdown form is stored here.
+
+### `img`
+Example images accumulated during testing features are stored here.
+
+### `obj`
+Intermediate object files produced during build are stored here.
+
+### `src`
+Source files for the raytracer are stored here.
 
 ## Dependencies
 ### libpng
