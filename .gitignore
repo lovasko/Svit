@@ -1,6 +1,5 @@
-CMakeCache.txt
-CMakeFiles/
-Makefile
-Svit
-cmake_install.cmake
 output*.png
+bin/
+obj/
+.ninja_*
+
