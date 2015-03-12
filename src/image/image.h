@@ -1,11 +1,11 @@
-#ifndef SVIT_IMAGE
-#define SVIT_IMAGE
+#ifndef SVIT_IMAGE_IMAGE_H
+#define SVIT_IMAGE_IMAGE_H
 
-#include "geom/vector.h"
-#include "geom/point.h"
-
-#include <vector>
 #include <string>
+#include <vector>
+
+#include "geom/point.h"
+#include "geom/vector.h"
 
 namespace Svit
 {
@@ -18,7 +18,7 @@ namespace Svit
 			Vector2i size;
 
 			Vector3& 
-			operator() (int x, int y);
+			operator() (int _x, int _y);
 
 			void
 			resize (Vector2i _size);
@@ -28,10 +28,10 @@ namespace Svit
 			Image (Vector2i& _size);
 
 			void
-			paste (Point2i start, Image& source);
+			paste (Point2i _start, Image& _source);
 
 			int 
-			write (std::string filename);
+			write (std::string _filename);
 	};
 }
 

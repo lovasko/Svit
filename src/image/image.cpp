@@ -1,16 +1,17 @@
-#include "image/image.h"
+#include <iostream>
 
 #include <assert.h>
-#include <iostream>
 #include <png.h>
+
+#include "image/image.h"
 
 namespace Svit
 {
 	Vector3& 
-	Image::operator() (int x, int y)
+	Image::operator() (int _x, int _y)
 	{
-		assert(x >= 0 && y >= 0);
-		return data[x * size.y + y];
+		assert(_x >= 0 && _y >= 0);
+		return data[_x * size.y + _y];
 	}
 
 	void
@@ -38,22 +39,22 @@ namespace Svit
 	}
 
 	void
-	Image::paste (Point2i start, Image& source)
+	Image::paste (Point2i _start, Image& _source)
 	{
-		assert(start.x + source.size.x <= size.x);
-		assert(start.y + source.size.y <= size.y);
+		assert(_start.x + _source.size.x <= size.x);
+		assert(_start.y + _source.size.y <= size.y);
 
-		for (int x = start.x; x < start.x + source.size.x; x++) 	
-		for (int y = start.y; y < start.y + source.size.y; y++) 	
+		for (int x = _start.x; x < _start.x + _source.size.x; x++) 	
+		for (int y = _start.y; y < _start.y + _source.size.y; y++) 	
 		{
-			(*this)(x, y) = source(x - start.x, y - start.y);
+			(*this)(x, y) = _source(x - _start.x, y - _start.y);
 		}
 	}
 
 	int 
-	Image::write (std::string filename)
+	Image::write (std::string _filename)
 	{
-		FILE *file = fopen(filename.c_str(), "wb");
+		FILE *file = fopen(_filename.c_str(), "wb");
 		png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, 
 				NULL, NULL);
 		png_infop info = png_create_info_struct(png);
