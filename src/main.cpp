@@ -63,7 +63,7 @@ main (void)
 	world.camera = &camera;
 
 	Image image = renderer.render(world, settings, engine, super_sampling);
-	image.write(std::string("cow.png"));
+	image.write_png(std::string("cow.png"));
 
 	return 0;
 }

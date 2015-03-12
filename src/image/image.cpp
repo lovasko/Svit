@@ -1,7 +1,10 @@
 #include <iostream>
 
 #include <assert.h>
-#include <png.h>
+
+#ifdef USE_PNG
+	#include <png.h>
+#endif
 
 #include "image/image.h"
 
@@ -51,8 +54,9 @@ namespace Svit
 		}
 	}
 
+#ifdef USE_PNG
 	int 
-	Image::write (std::string _filename)
+	Image::write_png (std::string _filename)
 	{
 		FILE *file = fopen(_filename.c_str(), "wb");
 		png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, 
@@ -99,5 +103,7 @@ namespace Svit
 
 		return 0;
 	}
+#endif
+
 }
 

@@ -30,8 +30,11 @@ namespace Svit
 			void
 			paste (Point2i _start, Image& _source);
 
+#ifdef USE_PNG
 			int 
-			write (std::string _filename);
+			write_png (std::string _filename);
+#endif
+
 	};
 }
 
