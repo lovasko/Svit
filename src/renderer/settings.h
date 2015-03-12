@@ -1,29 +1,23 @@
-#ifndef SVIT_SETTINGS
-#define SVIT_SETTINGS
+#ifndef SVIT_RENDERER_SETTINGS_H
+#define SVIT_RENDERER_SETTINGS_H
 
-#include "geom/vector.h"
 #include "geom/rect.h"
+#include "geom/vector.h"
 
 namespace Svit
 {
-	struct Settings
+	class Settings
 	{
-		Rectangle whole_area;
-		Rectangle area;
-		Vector2i tile_size;
-		unsigned int max_thread_count;
-		unsigned int max_sample_count;
-		unsigned int adaptive_sample_step;
+		public:
+			Rectangle whole_area;
+			Rectangle area;
+			Vector2i tile_size;
+			unsigned int max_thread_count;
+			unsigned int max_sample_count;
+			unsigned int adaptive_sample_step;
 
-		void
-		dump (const char *name, unsigned int level = 0)
-		{
-			std::string indentation(level*2, ' ');	
-			std::cout << indentation << name << " = Settings" << std::endl;
-			area.dump("area", level+1);
-			tile_size.dump("tile size", level+1);
-			// TODO sample_count and max_thread_count
-		}
+			void
+			dump (const char* _name, unsigned int _level = 0);
 	};
 }
 

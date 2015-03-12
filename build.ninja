@@ -37,6 +37,9 @@ build obj/image/image.o: compile src/image/image.cpp
 build obj/model/model.o: compile src/model/model.cpp
 build obj/model/obj.o: compile src/model/obj.cpp
 
+# settings
+build obj/renderer/settings.o: compile src/renderer/settings.cpp
+
 # main
 build obj/main.o: compile src/main.cpp
 
