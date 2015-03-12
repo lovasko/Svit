@@ -2,10 +2,21 @@
 C++11 raytracer
 
 ## Features
- * OBJ file loading
- * x86 SIMD optimizations
+#### Graphical primitives
+ * Disc
+ * Infinite plane
+ * Sphere
+ * Triangle
+
+#### Model formats
+ * OBJ
+
+#### Output formats
+ * PNG
+
+#### Optimizations
+ * x86 SIMD support 
  * multi-threaded execution
- * PNG output
 
 ## Build
 ### Compilation options
