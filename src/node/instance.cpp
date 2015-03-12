@@ -105,7 +105,7 @@ namespace Svit
 	void 
 	Instance::scale (float _scale)
 	{
-		scale(Vector4(_scale));
+		scale(Vector4(_scale, _scale, _scale));
 	}
 
 	void 
