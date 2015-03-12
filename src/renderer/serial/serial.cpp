@@ -1,6 +1,6 @@
-#include "renderer/serial/serial.h"
-
 #include <iostream>
+
+#include "renderer/serial/serial.h"
 
 namespace Svit
 {

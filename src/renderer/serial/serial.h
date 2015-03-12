@@ -1,11 +1,11 @@
-#ifndef SVIT_SERIAL_RENDERER
-#define SVIT_SERIAL_RENDERER
+#ifndef SVIT_RENDERER_SERIAL_SERIAL_H
+#define SVIT_RENDERER_SERIAL_SERIAL_H
 
-#include "renderer/renderer.h"
-#include "image/image.h"
-#include "world/world.h"
 #include "engine/engine.h"
+#include "image/image.h"
+#include "renderer/renderer.h"
 #include "renderer/settings.h"
+#include "world/world.h"
 
 namespace Svit
 {
