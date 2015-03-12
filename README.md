@@ -10,7 +10,13 @@ C++11 raytracer
 ## Build
 ### Compilation options
 ##### USE_SSE
+In case this macro is defined, a source code containing the x86
+optimization routines will be included during the compilation process.
+
 ##### USE_PNG
+In case this macro is defined, a source code containing the `libpng` routines
+used to store the rendered images to the disk will be included during the
+compilation process.
 
 ### Ninja
 ```
