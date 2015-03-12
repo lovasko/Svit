@@ -1,0 +1,39 @@
+cflags = -Isrc -I/opt/local/include/ -pthread -std=c++11 -O3 -Wall
+ldflags = -L/opt/local/lib -lpng
+macros = -DUSE_SSE
+
+rule compile
+  command = clang++ $cflags $macros -c $in -o $out 
+
+rule link
+  command = clang++ -o $out $in $ldflags
+
+# camera
+build obj/camera/perspective.o: compile src/camera/perspective.cpp
+
+# engine
+build obj/engine/cosine_debugger.o: compile src/engine/cosine_debugger.cpp
+
+# renderer
+build obj/renderer/serial/serial.o: compile src/renderer/serial/serial.cpp
+
+# super sampling
+build obj/supersampling/random.o: compile src/supersampling/random.cpp
+
+# instance 
+build obj/node/instance.o: compile src/node/instance.cpp
+
+# group
+build obj/node/group/simple.o: compile src/node/group/simple.cpp
+
+# solid
+build obj/node/solid/sphere.o: compile src/node/solid/sphere.cpp
+
+# image
+build obj/image/image.o: compile src/image/image.cpp
+
+# main
+build obj/main.o: compile src/main.cpp
+
+# final link
+build bin/svit: link obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o 
