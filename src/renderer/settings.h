@@ -1,7 +1,7 @@
 #ifndef SVIT_RENDERER_SETTINGS_H
 #define SVIT_RENDERER_SETTINGS_H
 
-#include "geom/rect.h"
+#include "geom/rectangle.h"
 #include "geom/vector.h"
 
 namespace Svit

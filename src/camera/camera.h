@@ -3,7 +3,7 @@
 
 #include "geom/point.h"
 #include "geom/ray.h"
-#include "geom/rect.h"
+#include "geom/rectangle.h"
 
 namespace Svit
 {

@@ -7,7 +7,7 @@
 #include "camera/perspective.h"
 #include "engine/cosine_debugger.h"
 #include "geom/point.h"
-#include "geom/rect.h"
+#include "geom/rectangle.h"
 #include "geom/vector.h"
 #include "image/image.h"
 #include "model/obj.h"

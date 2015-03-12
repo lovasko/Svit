@@ -3,7 +3,7 @@
 
 #include "camera/camera.h"
 #include "geom/point.h"
-#include "geom/rect.h"
+#include "geom/rectangle.h"
 #include "geom/vector.h"
 
 namespace Svit
