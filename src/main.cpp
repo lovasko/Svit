@@ -1,8 +1,8 @@
-#include <iostream>
-#include <sstream>
 #include <cmath>
-#include <thread>
+#include <iostream>
 #include <memory>
+#include <sstream>
+#include <thread>
 
 #include "camera/perspective.h"
 #include "engine/cosine_debugger.h"
