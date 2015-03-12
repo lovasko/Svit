@@ -1,14 +1,17 @@
 # Svit
-C++11 raytracer.
+C++11 raytracer
 
 ## Features
+ * OBJ file loading
+ * x86 SIMD optimizations
+ * multi-threaded execution
+ * PNG output
 
 ## Build
 ### Compilation options
 #### USE_SSE
 #### PNG
 
-### CMake
 ### Ninja
 ```
 $ ninja
@@ -23,9 +26,7 @@ $ ninja
 
 ## Dependencies
 ### libpng
-### zeromq
-### cereal
-### librsync 
 
-## Documentation
+## Author
+Daniel Lovasko lovasko@freebsd.org
 
