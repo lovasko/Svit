@@ -1,9 +1,9 @@
-#ifndef SVIT_CAMERA
-#define SVIT_CAMERA
+#ifndef SVIT_CAMERA_CAMERA_H
+#define SVIT_CAMERA_CAMERA_H
 
 #include "geom/point.h"
-#include "geom/rect.h"
 #include "geom/ray.h"
+#include "geom/rect.h"
 
 namespace Svit
 {
@@ -16,3 +16,4 @@ namespace Svit
 }
 
 #endif
+
