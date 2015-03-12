@@ -1,9 +1,9 @@
-#ifndef SVIT_COSINE_DEBUGGER_ENGINE
-#define SVIT_COSINE_DEBUGGER_ENGINE
-
-#include "engine/engine.h"
+#ifndef SVIT_ENGINE_COSINE_DEBUGGER_H
+#define SVIT_ENGINE_COSINE_DEBUGGER_H
 
 #include <list>
+
+#include "engine/engine.h"
 
 namespace Svit
 {

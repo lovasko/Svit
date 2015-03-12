@@ -1,7 +1,7 @@
-#include "engine/cosine_debugger.h"
-
 #include <cmath>
 #include <numeric>
+
+#include "engine/cosine_debugger.h"
 
 namespace Svit
 {
