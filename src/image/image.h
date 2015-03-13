@@ -35,6 +35,9 @@ namespace Svit
 			write_png (std::string _filename);
 #endif
 
+			int
+			write_ppm (std::string _filename, unsigned int _depth);
+
 	};
 }
 

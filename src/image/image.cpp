@@ -1,3 +1,5 @@
+#include <cmath>
+#include <fstream>
 #include <iostream>
 
 #include <assert.h>
@@ -104,6 +106,40 @@ namespace Svit
 		return 0;
 	}
 #endif
+
+	int
+	Image::write_ppm (std::string _filename, unsigned int _depth)
+	{
+		assert(_depth == 1 || 
+		       _depth == 2 ||
+		       _depth == 4 ||
+		       _depth == 8 ||
+		       _depth == 16);
+
+		std::ofstream ppm(_filename.c_str(), std::ofstream::out);
+		unsigned int max_color;
+
+		max_color = ((int)pow(2.0f, _depth)-1);
+
+		ppm << "P3" << std::endl;
+		ppm	<< size.x << " " << size.y << std::endl;
+		ppm << max_color << std::endl;
+
+		for (unsigned int y = 0; y < size.y; y++)
+		{
+			for (unsigned int x = 0; x < size.x; x++)
+			{
+				Vector3& rgb = (*this)(x, y);
+				ppm << (int)((rgb.x > 1.0 ? 1.0 : rgb.x) * (float)max_color) << " ";
+				ppm << (int)((rgb.y > 1.0 ? 1.0 : rgb.y) * (float)max_color) << " ";
+				ppm << (int)((rgb.z > 1.0 ? 1.0 : rgb.z) * (float)max_color) << " ";
+			}
+			
+			ppm << std::endl;
+		}
+
+		return 0;
+	}
 
 }
 
