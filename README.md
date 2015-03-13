@@ -64,7 +64,7 @@ with portability in mind and majority of the port-related changes should appear
 in the build file only.
 
 ## License
-2-clause BSD, see the [full license](LICENSE) for more information.
+2-clause BSD, see the [full license](LICENSE.md) for more information.
 
 ## Author
 Daniel Lovasko lovasko@freebsd.org
