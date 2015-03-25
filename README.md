@@ -71,3 +71,6 @@ in the build file only.
 ## Author
 Daniel Lovasko lovasko@freebsd.org
 
+## Contributors
+* Jakub Stasta
+
