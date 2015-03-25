@@ -14,6 +14,7 @@ C++11 raytracer
 #### Output formats
  * PNG
  * PPM
+ * RGBE (HDR)
 
 #### Optimizations
  * x86 SIMD support 
