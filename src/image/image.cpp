@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include <assert.h>
+#include <stdint.h>
 
 #ifdef USE_PNG
 	#include <png.h>
@@ -138,6 +139,41 @@ namespace Svit
 			ppm << std::endl;
 		}
 
+		return 0;
+	}
+
+	int
+	Image::write_rgbe (std::string _filename)
+	{
+		std::ofstream rgbe(_filename, std::ios::binary);
+
+		rgbe << "#?RADIANCE" << '\n';
+		rgbe << "# Svit" << '\n';
+		rgbe << "FORMAT=32-bit_rle_rgbe" << '\n' << '\n';
+		rgbe << "-Y " << size.y << " +X " << size.x << '\n';
+
+		for (int y = 0; y < size.y; y++)
+		for (int x = 0; x < size.x; x++)
+		{
+			uint8_t pixel[4] = {0, 0, 0, 0};
+			Vector3& rgb = (*this)(x, y);
+			float max_component = rgb.max_component3();
+
+			if (max_component >= 1e-32f)
+			{
+				int exponent;
+				float mantissa;
+
+				mantissa = frexpf(max_component, &exponent) * 256.0f / max_component;
+				pixel[0] = (uint8_t)(rgb.x * mantissa);
+				pixel[1] = (uint8_t)(rgb.y * mantissa);
+				pixel[2] = (uint8_t)(rgb.z * mantissa);
+				pixel[3] = exponent;
+			}
+
+			rgbe << pixel[0] << pixel[1] << pixel[2] << pixel[3];
+		}
+		
 		return 0;
 	}
 

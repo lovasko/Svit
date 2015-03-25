@@ -38,6 +38,8 @@ namespace Svit
 			int
 			write_ppm (std::string _filename, unsigned int _depth);
 
+			int
+			write_rgbe (std::string _filename);
 	};
 }
 
