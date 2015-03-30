@@ -1,6 +1,7 @@
 #ifndef SVIT_GEOM_VECTOR_H
 #define SVIT_GEOM_VECTOR_H
 
+#include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <stdexcept>
@@ -53,6 +54,18 @@ namespace Svit
 				}
 
 				throw std::runtime_error("Bad index");
+			}
+
+			Scalar
+			max_component3 ()
+			{
+				return std::max(x, std::max(y, z));
+			}
+
+			Scalar
+			max_component4 ()
+			{
+				return std::max(x, std::max(y, std::max(z, w)));
 			}
 
 			void
