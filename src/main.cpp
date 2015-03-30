@@ -12,6 +12,10 @@
 #include "image/image.h"
 #include "model/obj.h"
 #include "node/group/simple.h"
+#include "node/group/kdtree/kdtree.h"
+#include "node/group/kdtree/axis_selector/round_robin.h"
+#include "node/group/kdtree/split_strategy/centre.h"
+#include "node/group/kdtree/kdtree.h"
 #include "node/instance.h"
 #include "node/solid/disc.h"
 #include "node/solid/infinite_plane.h"
@@ -49,21 +53,32 @@ main (void)
 		Rectangle(Point2i(0, 0), Vector2i(128, 72)).get_aspect_ratio(),
 		M_PI/2.0f);
 
-	ObjModel cow;
-	cow.load("cow.obj");
+	ObjModel cow_model;
+	cow_model.load("simplecow.obj");
 
-	SimpleGroup cow_group;
-	cow.add_to_group(cow_group);
+	KDTree cow(new RoundRobinAxisSelector(), new CentreSplitStrategy(), 20, 3);
+	cow_model.add_to_group(cow);
+	cow.finish();
 
-	scene.add(&sphere);
-	scene.add(&cow_group);
+	cow.root.bounding_box.max.dump("cow bb min");
+	cow.root.bounding_box.min.dump("cow bb max");
+
+	/* KDTree spheres(new RoundRobinAxisSelector(), new CentreSplitStrategy(), 20, 100); */
+	/* for (unsigned int i = 0; i < 6; i++) */
+	/* 	spheres.add(new Sphere(Point3((float)i/5.0f*10.0f, 0.0f, 0.0f), 1.0f)); */
+
+	/* spheres.finish(); */
+	/* scene.add(&spheres); */
+
+	scene.add(&cow);
+	/* scene.add(&sphere); */
 
 	World world;
 	world.scene = &scene;
 	world.camera = &camera;
 
 	Image image = renderer.render(world, settings, engine, super_sampling);
-	image.write_png(std::string("cow.png"));
+	image.write_png(std::string("coww.png"));
 
 	return 0;
 }
