@@ -15,9 +15,7 @@ namespace Svit
 			float radius;
 
 		public:
-			Sphere (Point3 _center, float _radius)
-				: center(_center), radius(_radius)
-			{ }
+			Sphere (Point3 _center, float _radius);
 
 			boost::optional<Intersection>
 			intersect (Ray& _ray, float _best);

@@ -2,6 +2,16 @@
 
 namespace Svit
 {
+	Sphere::Sphere (Point3 _center, float _radius)
+		: center(_center), radius(_radius)
+	{ 
+		Point3 min = center - Vector3(radius, radius, radius);
+		Point3 max = center + Vector3(radius, radius, radius);
+
+		bounding_box.extend(min);
+		bounding_box.extend(max);
+	}
+
 	boost::optional<Intersection>
 	Sphere::intersect (Ray& _ray, float _best)
 	{
