@@ -1,9 +1,9 @@
-#include "node/group/kdtree/axis_selector/round_robin.h"
+#include "node/group/axis_selector/round_robin.h"
 
 namespace Svit
 {
 	Axis
-	RoundRobinAxisSelector::next (Axis _current)
+	RoundRobinAxisSelector::next (Axis _current, BoundingBox _bounding_box)
 	{
 		switch (_current)
 		{
