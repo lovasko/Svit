@@ -46,6 +46,12 @@ namespace Svit
 
 			bool
 			contains (Point3& _point);
+
+			Point3
+			centroid ();
+
+			void
+			dump (std::string _name, unsigned int _level = 0);
 	};
 }
 

@@ -138,5 +138,23 @@ namespace Svit
 			      _point.y > min.y && _point.y < max.y &&
 			      _point.z > min.z && _point.z < max.z);
 	}
+
+	Point3
+	BoundingBox::centroid ()
+	{
+		return (min + max) / 2.0f;
+	}
+
+	void
+	BoundingBox::dump (std::string _name, unsigned int _level)
+	{
+		std::cout << std::string(' ', _level*2)
+		          << _name
+		          << " = BoundingBox"
+		          << std::endl;
+
+		min.dump("min", _level+1);
+		max.dump("max", _level+1);
+	}
 }
 
