@@ -35,10 +35,11 @@ build obj/node/instance.o: compile src/node/instance.cpp
 
 # group
 build obj/node/group/simple.o: compile src/node/group/simple.cpp
-build obj/node/group/kdtree/kdtree.o: compile src/node/group/kdtree/kdtree.cpp
-build obj/node/group/kdtree/kdnode.o: compile src/node/group/kdtree/kdnode.cpp
-build obj/node/group/kdtree/axis_selector/round_robin.o: compile src/node/group/kdtree/axis_selector/round_robin.cpp
-build obj/node/group/kdtree/split_strategy/centre.o: compile src/node/group/kdtree/split_strategy/centre.cpp
+#build obj/node/group/kdtree/kdtree.o: compile src/node/group/kdtree/kdtree.cpp
+#build obj/node/group/kdtree/kdnode.o: compile src/node/group/kdtree/kdnode.cpp
+build obj/node/group/axis_selector/round_robin.o: compile src/node/group/axis_selector/round_robin.cpp
+build obj/node/group/split_strategy/centre.o: compile src/node/group/split_strategy/centre.cpp
+build obj/node/group/bvh.o: compile src/node/group/bvh.cpp
 
 # solid
 build obj/node/solid/sphere.o: compile src/node/solid/sphere.cpp
@@ -55,4 +56,4 @@ build obj/model/obj.o: compile src/model/obj.cpp
 build obj/main.o: compile src/main.cpp
 
 # final link
-build bin/svit: link obj/geom/bounding_box.o obj/node/group/kdtree/kdtree.o obj/node/group/kdtree/kdnode.o obj/node/group/kdtree/axis_selector/round_robin.o obj/node/group/kdtree/split_strategy/centre.o obj/geom/ray.o obj/geom/rectangle.o obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o 
+build bin/svit: link obj/node/group/bvh.o obj/geom/bounding_box.o obj/node/group/axis_selector/round_robin.o obj/node/group/split_strategy/centre.o obj/geom/ray.o obj/geom/rectangle.o obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o
