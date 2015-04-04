@@ -1,7 +1,7 @@
 #ifndef SVIT_KDTREE_SPLIT_STRATEGY_CENTRE
 #define SVIT_KDTREE_SPLIT_STRATEGY_CENTRE
 
-#include "node/group/kdtree/split_strategy/split_strategy.h"
+#include "node/group/split_strategy/split_strategy.h"
 
 namespace Svit
 {
