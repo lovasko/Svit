@@ -1,8 +1,9 @@
 #ifndef SVIT_NODE
 #define SVIT_NODE
 
-#include "geom/ray.h"
 #include "geom/bounding_box.h"
+#include "geom/ray.h"
+#include "node/intersection.h"
 
 #include <list>
 #include <iostream>
@@ -10,8 +11,6 @@
 
 namespace Svit
 {
-	struct Intersection;
-
 	class Node
 	{
 		public:
@@ -19,16 +18,6 @@ namespace Svit
 
 			virtual boost::optional<Intersection>
 			intersect (Ray& _ray, float _best) = 0;
-	};
-
-	class Solid;
-
-	struct Intersection
-	{
-		Solid *node;	
-		float t;
-		Vector3 normal;
-		Point3 point;
 	};
 }
 
