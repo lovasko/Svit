@@ -7,8 +7,8 @@
 #include "geom/ray.h"
 #include "node/group/group.h"
 #include "node/group/kdtree/kdnode.h"
-#include "node/group/kdtree/axis_selector/axis_selector.h"
-#include "node/group/kdtree/split_strategy/split_strategy.h"
+#include "node/group/axis_selector/axis_selector.h"
+#include "node/group/split_strategy/split_strategy.h"
 
 namespace Svit
 {
