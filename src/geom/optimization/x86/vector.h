@@ -64,6 +64,18 @@ namespace Svit
 				throw std::runtime_error("Bad index");
 			}
 
+			float
+			max_component3 ()
+			{
+				return std::max(x, std::max(y, z));
+			}
+
+			float
+			max_component4 ()
+			{
+				return std::max(x, std::max(y, std::max(z, w)));
+			}
+
 			inline void
 			dump (const char *name, unsigned int level = 0)
 			{
