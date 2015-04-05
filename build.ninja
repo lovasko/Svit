@@ -1,5 +1,5 @@
-cflags = -Isrc -I/usr/local/include/ -pthread -std=c++11 -O3 -Wall
-ldflags = -L/usr/local/lib -lpng
+cflags = -Isrc -I/opt/local/include -pthread -std=c++11 -O3 -Wall
+ldflags = -L/opt/local/lib -lpng
 
 # edit this line in order to lose support for a specific feature
 macros = -DUSE_SSE -DUSE_PNG
@@ -26,6 +26,8 @@ build obj/geom/bounding_box.o: compile src/geom/bounding_box.cpp
 build obj/renderer/renderer.o: compile src/renderer/renderer.cpp
 build obj/renderer/settings.o: compile src/renderer/settings.cpp
 build obj/renderer/serial/serial.o: compile src/renderer/serial/serial.cpp
+build obj/renderer/parallel/parallel.o: compile src/renderer/parallel/parallel.cpp
+build obj/renderer/parallel/task_dispatcher.o: compile src/renderer/parallel/task_dispatcher.cpp
 
 # super sampling
 build obj/supersampling/random.o: compile src/supersampling/random.cpp
@@ -56,4 +58,4 @@ build obj/model/obj.o: compile src/model/obj.cpp
 build obj/main.o: compile src/main.cpp
 
 # final link
-build bin/svit: link obj/node/group/bvh.o obj/geom/bounding_box.o obj/node/group/axis_selector/round_robin.o obj/node/group/split_strategy/centre.o obj/geom/ray.o obj/geom/rectangle.o obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o
+build bin/svit: link obj/renderer/parallel/parallel.o obj/renderer/parallel/task_dispatcher.o obj/node/group/bvh.o obj/geom/bounding_box.o obj/node/group/axis_selector/round_robin.o obj/node/group/split_strategy/centre.o obj/geom/ray.o obj/geom/rectangle.o obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o
