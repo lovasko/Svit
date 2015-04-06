@@ -20,6 +20,10 @@ C++11 raytracer
  * x86 SIMD support 
  * multi-threaded execution
 
+#### Acceleration structures
+ * BVH (with tree cutting optimization)
+ * kD-tree
+
 ## Build
 ### Compilation options
 ##### USE_SSE
