@@ -12,7 +12,7 @@ namespace Svit
 		int whole_y = _settings.whole_area.size.y;
 
 		Image result(_settings.area.size);
-		SuperSampling* super_sampling = &_super_sampling; //.copy();
+		SuperSampling* super_sampling = _super_sampling.copy();
 
 		for (int x = _settings.area.start.x; 
 		         x < _settings.area.start.x + _settings.area.size.x; 
