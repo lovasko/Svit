@@ -33,7 +33,9 @@ namespace Svit
 			BVHNode* bvhnode = s.top();
 			s.pop();
 
-			if (!bvhnode->bounding_box.intersect(_ray))
+			float t_near;
+			float t_far;
+			if (!bvhnode->bounding_box.intersect(_ray, &t_near, &t_far))
 				continue;
 
 			if (bvhnode->is_leaf)
@@ -158,24 +160,39 @@ namespace Svit
 		/* TODO root might be one-childed */
 		s.push(&root);
 
+		BVHNode* to_delete = nullptr;
 		while (!s.empty())
 		{
 			auto bvhnode = s.top();
 			s.pop();
 
-			/* TODO do deleting! */
-
 			if (bvhnode->left->left == nullptr)
+			{
+				to_delete = bvhnode->left;
 				bvhnode->left = bvhnode->left->right;
+				delete to_delete;
+			}
 
 			if (bvhnode->left->right == nullptr)
+			{
+				to_delete = bvhnode->left;
 				bvhnode->left = bvhnode->left->left;
+				delete to_delete;
+			}
 
 			if (bvhnode->right->right == nullptr)
+			{
+				to_delete = bvhnode->right;
 				bvhnode->right = bvhnode->right->left;
+				delete to_delete;
+			}
 
 			if (bvhnode->right->left == nullptr)
+			{
+				to_delete = bvhnode->right;
 				bvhnode->right = bvhnode->right->right;
+				delete to_delete;
+			}
 		}
 	}
 
