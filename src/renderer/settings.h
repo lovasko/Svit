@@ -17,7 +17,7 @@ namespace Svit
 			unsigned int adaptive_sample_step;
 
 			void
-			dump (const char* _name, unsigned int _level = 0);
+			dump (const char* _name, unsigned int _level = 0) const;
 	};
 }
 

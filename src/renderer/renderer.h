@@ -13,11 +13,13 @@ namespace Svit
 	{
 		public:
 			virtual Image
-			render (World& _world, Settings& _settings, Engine& _engine,
-			SuperSampling& _super_sampling) = 0;
+			render (World& _world,
+			        Settings& _settings,
+			        Engine& _engine,
+			        SuperSampling& _super_sampling) const = 0;
 
 			float 
-			compute_normalized_coordinate (float _value, float _max_value);
+			compute_normalized_coordinate (float _value, float _max_value) const;
 	};
 }
 

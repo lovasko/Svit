@@ -44,7 +44,7 @@ namespace Svit
 
 	Image
 	ParallelRenderer::render (World& _world, Settings& _settings, Engine&
-	    _engine, SuperSampling& _super_sampling)
+	    _engine, SuperSampling& _super_sampling) const
 	{
 		TaskDispatcher task_dispatcher(_settings);
 		std::vector<std::future<Tiles>> futures(0);

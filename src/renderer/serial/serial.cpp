@@ -6,7 +6,7 @@ namespace Svit
 {
 	Image
 	SerialRenderer::render (World& _world, Settings& _settings, Engine& _engine,
-	    SuperSampling& _super_sampling)
+	    SuperSampling& _super_sampling) const
 	{
 		int whole_x = _settings.whole_area.size.x;
 		int whole_y = _settings.whole_area.size.y;

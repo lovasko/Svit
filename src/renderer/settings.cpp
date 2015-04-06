@@ -3,7 +3,7 @@
 namespace Svit
 {
 	void
-	Settings::dump (const char* _name, unsigned int _level)
+	Settings::dump (const char* _name, unsigned int _level) const
 	{
 		std::string indentation(_level*2, ' ');
 		std::cout << indentation << _name << " = Settings" << std::endl;
