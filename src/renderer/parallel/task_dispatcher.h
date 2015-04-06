@@ -21,7 +21,7 @@ namespace Svit
 		public:
 			TaskDispatcher (Settings& _settings);
 
-			boost::optional<Task> 
+			boost::optional<Task>
 			get_task ();
 
 			unsigned int index;
