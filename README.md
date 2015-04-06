@@ -37,23 +37,26 @@ $ ninja
 ```
 
 ## Directories
+Some of these directories do not exist in the repository but are created during
+compilation or runtime.
+
 ##### `bin`
 The final raytracer binary `svit` is stored here.
 
 ##### `doc`
-Documentation in Markdown form is stored here.
+Documentation in Markdown format.
 
 ##### `img`
-Example images accumulated during testing features are stored here.
-
-##### `obj`
-Intermediate object files produced during build are stored here.
-
-##### `src`
-Source files for the raytracer are stored here.
+Example images accumulated during testing features.
 
 ##### `mdl`
 3D models for the test scenes.
+
+##### `obj`
+Intermediate object files produced during build.
+
+##### `src`
+Source code of the raytracer.
 
 ## Dependencies
 #### libpng >= 1.6.16
