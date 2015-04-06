@@ -84,7 +84,7 @@ namespace Svit
 			ObjModel ();
 
 			bool
-			load (std::string _filename);
+			load (std::string _filename) override;
 	};
 }
 

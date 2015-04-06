@@ -17,7 +17,7 @@ namespace Svit
 			load (std::string _filename) = 0;
 
 			virtual void
-			add_to_group (Group& _group);
+			add_to_group (Group& _group) const;
 	};
 }
 
