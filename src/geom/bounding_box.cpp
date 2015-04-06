@@ -96,11 +96,11 @@ namespace Svit
 			float t_near = (min[i] - _ray.origin[i]) * inv_ray_dir;
 			float t_far  = (max[i] - _ray.origin[i]) * inv_ray_dir;
 
-			if (tNear > tFar)
-				std::swap(tNear, tFar);
+			if (t_near > t_far)
+				std::swap(t_near, t_far);
 
-			t0 = tNear > t0 ? tNear : t0;
-			t1 = tFar  < t1 ? tFar  : t1;
+			t0 = t_near > t0 ? t_near : t0;
+			t1 = t_far  < t1 ? t_far  : t1;
 
 			if (t0 > t1)
 				 return false;
