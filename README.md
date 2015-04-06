@@ -52,6 +52,9 @@ Intermediate object files produced during build are stored here.
 ##### `src`
 Source files for the raytracer are stored here.
 
+##### `mdl`
+3D models for the test scenes.
+
 ## Dependencies
 #### libpng >= 1.6.16
 This depedency can be removed by removing the `-lpng` and `-DUSE_PNG` options
