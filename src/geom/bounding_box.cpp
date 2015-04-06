@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 #include <limits>
 #include <utility>
@@ -84,51 +85,30 @@ namespace Svit
 	}
 
 	bool
-	intersect_helper (float _origin, float _direction, float _min, float _max,
-	    float* _t_near, float* _t_far)
+	BoundingBox::intersect (Ray& _ray, float* _t_near, float* _t_far)
 	{
-		if (_direction == 0.0f)
+		float t0 = std::numeric_limits<float>::min();
+		float t1 = std::numeric_limits<float>::max();
+
+		for (int i = 0; i < 3; ++i)
 		{
-			if (_origin < _min || _origin > _max)
-				return boost::optional<std::tuple<float, float>>();
-		}
-		else
-		{
-			float t1 = (_min - _origin) / _direction;	
-			float t2 = (_max - _origin) / _direction;	
+			float inv_ray_dir = 1.0f / _ray.direction[i];
+			float t_near = (min[i] - _ray.origin[i]) * inv_ray_dir;
+			float t_far  = (max[i] - _ray.origin[i]) * inv_ray_dir;
 
-			if (t1 > t2)
-				std::swap(t1, t2);
+			if (tNear > tFar)
+				std::swap(tNear, tFar);
 
-			if (t1 > *_t_near)
-				*_t_near = t1;
+			t0 = tNear > t0 ? tNear : t0;
+			t1 = tFar  < t1 ? tFar  : t1;
 
-			if (t2 > *_t_far)
-				*_t_far = t2;
-
-			if (*_t_near > *_t_far || *_t_far < 0.0f)
-				return false;
+			if (t0 > t1)
+				 return false;
 		}
 
+		*_t_near = t0;
+		*_t_far = t1;
 		return true;
-	}
-
-	boost::optional<std::tuple<float, float>>
-	BoundingBox::intersect (Ray& _ray)
-	{
-		float t_near = std::numeric_limits<float>::min();
-		float t_far = std::numeric_limits<float>::max();
-
-		if (intersect_helper(_ray.origin.x, _ray.direction.x, min.x, max.x, &t_near, 
-		    &t_far) &&
-		    intersect_helper(_ray.origin.y, _ray.direction.y, min.y, max.y, &t_near, 
-		    &t_far) &&
-		    intersect_helper(_ray.origin.z, _ray.direction.z, min.z, max.z, &t_near, 
-		    &t_far))
-			return boost::optional<std::tuple<float, float>>(std::make_tuple(t_near,
-			    t_far));
-		else
-			return boost::optional<std::tuple<float, float>>();
 	}
 
 	bool

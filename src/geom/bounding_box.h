@@ -41,8 +41,8 @@ namespace Svit
 			void
 			extend (BoundingBox& _bounding_box);
 
-			boost::optional<std::tuple<float, float>>
-			intersect (Ray& _ray);
+			bool
+			intersect (Ray& _ray, float* _t_near, float* _t_max);
 
 			bool
 			contains (Point3& _point);
