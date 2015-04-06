@@ -17,7 +17,7 @@ namespace Svit
 		public:
 			Vector2i size;
 
-			Vector3& 
+			Vector3&
 			operator() (int _x, int _y);
 
 			void
