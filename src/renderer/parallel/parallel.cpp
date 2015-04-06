@@ -11,8 +11,11 @@
 namespace Svit
 {
 	Tiles
-	ParallelRenderer::worker (TaskDispatcher& _task_dispatcher, World& _world, 
-	    Settings& _settings, Engine& _engine, SuperSampling& _super_sampling)
+	worker (TaskDispatcher& _task_dispatcher,
+	        World& _world,
+	        Settings& _settings,
+	        Engine& _engine,
+	        SuperSampling& _super_sampling)
 	{
 		Tiles result;
 		SerialRenderer serial_renderer;
