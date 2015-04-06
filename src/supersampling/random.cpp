@@ -47,5 +47,12 @@ namespace Svit
 		results.clear();
 		return result;
 	}
+
+	SuperSampling*
+	RandomSuperSampling::copy ()
+	{
+		RandomSuperSampling* c = new RandomSuperSampling(*this);
+		return c;
+	}
 }
 

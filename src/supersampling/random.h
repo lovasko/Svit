@@ -23,23 +23,19 @@ namespace Svit
 			}
 
 			Vector2
-			next_sample (int _x, int _y);
+			next_sample (int _x, int _y) override;
 
 			void
-			add_result (Vector3 _result);
+			add_result (Vector3 _result) override;
 
 			bool
-			enough ();
+			enough () override;
 
 			Vector3
-			final_result ();
+			final_result () override;
 
 			SuperSampling*
-			copy ()
-			{
-				RandomSuperSampling *c = new RandomSuperSampling(*this);
-				return c;
-			}
+			copy () override;
 	};
 }
 
