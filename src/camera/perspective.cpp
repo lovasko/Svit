@@ -27,7 +27,7 @@ namespace Svit
 	}
 
 	Ray
-	PerspectiveCamera::get_ray (float _x, float _y)
+	PerspectiveCamera::get_ray (float _x, float _y) const
 	{
 		Ray ray;
 		ray.origin = position;

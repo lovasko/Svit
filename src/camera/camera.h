@@ -11,7 +11,7 @@ namespace Svit
 	{
 		public:
 			virtual Ray 
-			get_ray (float _x, float _y) = 0;
+			get_ray (float _x, float _y) const = 0;
 	};
 }
 

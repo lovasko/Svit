@@ -28,7 +28,7 @@ namespace Svit
 			    float _aspect_ratio, float _horizontal_angle);
 
 			Ray
-			get_ray (float _x, float _y);
+			get_ray (float _x, float _y) const override;
 	};
 }
 
