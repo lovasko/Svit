@@ -17,13 +17,13 @@ namespace Svit
 			Rectangle (Point2i _start, Vector2i _size);
 
 			int
-			get_area ();
+			get_area () const;
 
 			float
-			get_aspect_ratio ();
+			get_aspect_ratio () const;
 
 			void
-			dump (const char* _name, unsigned int _level = 0);
+			dump (const char* _name, unsigned int _level = 0) const;
 	};
 }
 

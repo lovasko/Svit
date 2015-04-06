@@ -85,7 +85,7 @@ namespace Svit
 	}
 
 	bool
-	BoundingBox::intersect (Ray& _ray, float* _t_near, float* _t_far)
+	BoundingBox::intersect (Ray& _ray, float* _t_near, float* _t_far) const
 	{
 		float t0 = std::numeric_limits<float>::min();
 		float t1 = std::numeric_limits<float>::max();
@@ -112,7 +112,7 @@ namespace Svit
 	}
 
 	bool
-	BoundingBox::contains (Point3& _point)
+	BoundingBox::contains (Point3& _point) const
 	{
 		return (_point.x > min.x && _point.x < max.x &&
 			      _point.y > min.y && _point.y < max.y &&
@@ -120,13 +120,13 @@ namespace Svit
 	}
 
 	Point3
-	BoundingBox::centroid ()
+	BoundingBox::centroid () const
 	{
 		return (min + max) / 2.0f;
 	}
 
 	void
-	BoundingBox::dump (std::string _name, unsigned int _level)
+	BoundingBox::dump (std::string _name, unsigned int _level) const
 	{
 		std::cout << std::string(' ', _level*2)
 		          << _name

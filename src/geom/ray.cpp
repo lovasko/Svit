@@ -16,7 +16,7 @@ namespace Svit
 	}
 
 	void
-	Ray::dump (const char* _name, unsigned int _level)
+	Ray::dump (const char* _name, unsigned int _level) const
 	{
 		std::string indentation(_level*2, ' ');
 		std::cout << indentation << _name << " = Ray" << std::endl;

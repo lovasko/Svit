@@ -12,13 +12,13 @@ namespace Svit
 	{ }
 
 	int
-	Rectangle::get_area ()
+	Rectangle::get_area () const
 	{
 		return size.x * size.y;
 	}
 
 	float
-	Rectangle::get_aspect_ratio ()
+	Rectangle::get_aspect_ratio () const
 	{
 		if (size.y == 0)
 			throw std::runtime_error("Rectangle height is zero");
@@ -27,7 +27,7 @@ namespace Svit
 	}
 
 	void
-	Rectangle::dump (const char* _name, unsigned int _level)
+	Rectangle::dump (const char* _name, unsigned int _level) const
 	{
 		std::string indentation(_level*2, ' ');	
 		std::cout << indentation << _name << " = Rectangle" << std::endl;

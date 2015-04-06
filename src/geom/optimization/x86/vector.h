@@ -42,8 +42,8 @@ namespace Svit
 				v = other;
 			}
 
-			inline float& 
-			operator[](int nth)
+			inline float const& 
+			operator[] (int nth) const
 			{
 				assert(nth >= 0 && nth <= 3);
 				switch (nth)
@@ -65,19 +65,19 @@ namespace Svit
 			}
 
 			float
-			max_component3 ()
+			max_component3 () const
 			{
 				return std::max(x, std::max(y, z));
 			}
 
 			float
-			max_component4 ()
+			max_component4 () const
 			{
 				return std::max(x, std::max(y, std::max(z, w)));
 			}
 
 			inline void
-			dump (const char *name, unsigned int level = 0)
+			dump (const char *name, unsigned int level = 0) const
 			{
 				std::string indentation(level*2, ' ');
 				std::cout << std::setprecision(10) << std::fixed;

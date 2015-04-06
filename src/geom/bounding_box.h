@@ -42,16 +42,16 @@ namespace Svit
 			extend (BoundingBox& _bounding_box);
 
 			bool
-			intersect (Ray& _ray, float* _t_near, float* _t_max);
+			intersect (Ray& _ray, float* _t_near, float* _t_max) const;
 
 			bool
-			contains (Point3& _point);
+			contains (Point3& _point) const;
 
 			Point3
-			centroid ();
+			centroid () const;
 
 			void
-			dump (std::string _name, unsigned int _level = 0);
+			dump (std::string _name, unsigned int _level = 0) const;
 	};
 }
 

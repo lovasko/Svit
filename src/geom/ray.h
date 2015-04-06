@@ -20,7 +20,7 @@ namespace Svit
 			operator() (float _time) const;
 
 			void
-			dump (const char *name, unsigned int level = 0);
+			dump (const char *name, unsigned int level = 0) const;
 	};
 }
 
