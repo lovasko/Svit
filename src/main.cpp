@@ -16,6 +16,7 @@
 #include "node/group/axis_selector/round_robin.h"
 #include "node/group/split_strategy/centre.h"
 #include "node/group/kdtree/kdtree.h"
+#include "node/group/bvh.h"
 #include "node/instance.h"
 #include "node/solid/disc.h"
 #include "node/solid/infinite_plane.h"
@@ -33,52 +34,49 @@ int
 main (void)
 {
 	Settings settings;
-	settings.whole_area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
-	settings.area = Rectangle(Point2i(0, 0), Vector2i(1280, 720));
+	settings.whole_area = Rectangle(Point2i(0, 0), Vector2i(800, 600));
+	settings.area = Rectangle(Point2i(0, 0), Vector2i(800, 600));
 	settings.max_thread_count = std::thread::hardware_concurrency();
-	settings.tile_size = Vector2i(10, 10);
-	settings.max_sample_count = 1;
+	settings.tile_size = Vector2i(100, 100);
+	settings.max_sample_count = 2;
 	settings.adaptive_sample_step = 10;
 
 	CosineDebuggerEngine engine;
-	SerialRenderer renderer;
+	ParallelRenderer renderer;
 	RandomSuperSampling super_sampling(true);
 
-	SimpleGroup scene;
-	Sphere sphere(Point3(0.0, 0.0, 0.0), 1.0);
 	PerspectiveCamera camera(
-		Point3(0.0, 0.75, -5.5),
+		Point3(0.0, 0.75, -4.5),
 		Vector3(0.0, 0.0, 1.0),
 		Vector3(0.0, 1.0, 0.0),
-		Rectangle(Point2i(0, 0), Vector2i(128, 72)).get_aspect_ratio(),
+		Rectangle(Point2i(0, 0), Vector2i(80, 60)).get_aspect_ratio(),
 		M_PI/2.0f);
 
 	ObjModel cow_model;
-	cow_model.load("simplecow.obj");
+	BVH cow_bvh(new RoundRobinAxisSelector(), new CentreSplitStrategy(), 520, 8);
+	Instance cow(&cow_bvh);
 
-	KDTree cow(new RoundRobinAxisSelector(), new CentreSplitStrategy(), 20, 3);
-	cow_model.add_to_group(cow);
-	cow.finish();
+	cow_model.load("mdl/cow.obj");
+	cow_model.add_to_group(cow_bvh);
+	cow_bvh.finish();
+	cow.rotate(Vector3(0.0f, 0.0f, 1.0f), M_PI/4.0f);
+	cow.rotate(Vector3(0.0f, 1.0f, 0.0f), M_PI/2.0f);
+	cow.rotate(Vector3(0.0f, 0.0f, 1.0f), M_PI/2.0f);
+	cow.rotate(Vector3(0.0f, 1.0f, 0.0f), M_PI/3.5f);
+	cow.translate(Vector3(-3.5f, -2.0f, 0.0f));
 
-	cow.root.bounding_box.max.dump("cow bb min");
-	cow.root.bounding_box.min.dump("cow bb max");
+	InfinitePlane plane(Point3(0.0f, -3.0f, 0.0f), Vector3(0.0f, 1.0f, 0.0f));
 
-	/* KDTree spheres(new RoundRobinAxisSelector(), new CentreSplitStrategy(), 20, 100); */
-	/* for (unsigned int i = 0; i < 6; i++) */
-	/* 	spheres.add(new Sphere(Point3((float)i/5.0f*10.0f, 0.0f, 0.0f), 1.0f)); */
-
-	/* spheres.finish(); */
-	/* scene.add(&spheres); */
-
+	SimpleGroup scene;
 	scene.add(&cow);
-	/* scene.add(&sphere); */
+	scene.add(&plane);
 
 	World world;
 	world.scene = &scene;
 	world.camera = &camera;
 
 	Image image = renderer.render(world, settings, engine, super_sampling);
-	image.write_png(std::string("coww.png"));
+	image.write_png(std::string("cow.png"));
 
 	return 0;
 }

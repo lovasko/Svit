@@ -45,6 +45,7 @@ build obj/node/group/bvh.o: compile src/node/group/bvh.cpp
 
 # solid
 build obj/node/solid/sphere.o: compile src/node/solid/sphere.cpp
+build obj/node/solid/infinite_plane.o: compile src/node/solid/infinite_plane.cpp
 build obj/node/solid/triangle.o: compile src/node/solid/triangle.cpp
 
 # image
@@ -58,4 +59,4 @@ build obj/model/obj.o: compile src/model/obj.cpp
 build obj/main.o: compile src/main.cpp
 
 # final link
-build bin/svit: link obj/renderer/parallel/parallel.o obj/renderer/parallel/task_dispatcher.o obj/node/group/bvh.o obj/geom/bounding_box.o obj/node/group/axis_selector/round_robin.o obj/node/group/split_strategy/centre.o obj/geom/ray.o obj/geom/rectangle.o obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o
+build bin/svit: link obj/node/solid/infinite_plane.o obj/renderer/parallel/parallel.o obj/renderer/parallel/task_dispatcher.o obj/node/group/bvh.o obj/geom/bounding_box.o obj/node/group/axis_selector/round_robin.o obj/node/group/split_strategy/centre.o obj/geom/ray.o obj/geom/rectangle.o obj/renderer/renderer.o obj/engine/engine.o obj/node/solid/triangle.o obj/model/model.o obj/model/obj.o obj/supersampling/random.o obj/image/image.o obj/node/solid/sphere.o obj/node/group/simple.o obj/node/instance.o obj/renderer/serial/serial.o obj/engine/cosine_debugger.o obj/camera/perspective.o obj/main.o
