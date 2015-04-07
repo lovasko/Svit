@@ -3,9 +3,6 @@
 
 #include "node/node.h"
 
-#include <list>
-#include <memory>
-
 namespace Svit
 {
 	class Solid : public Node
