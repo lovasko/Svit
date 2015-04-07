@@ -1,9 +1,6 @@
 #ifndef SVIT_GEOM_BOUNDING_BOX_H
 #define SVIT_GEOM_BOUNDING_BOX_H
 
-#include <boost/optional.hpp>
-#include <tuple>
-
 #include "geom/point.h"
 #include "geom/ray.h"
 
