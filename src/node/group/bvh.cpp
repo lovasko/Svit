@@ -18,15 +18,13 @@ namespace Svit
 	{
 	}
 
-	boost::optional<Intersection>
-	BVH::intersect (Ray& _ray, float _best)
+	bool
+	BVH::intersect (Ray& _ray, Intersection& _isect)
 	{
 		std::stack<BVHNode*> s;
 		s.push(&root);
 
 		bool found = false;
-		float best = _best;
-		Intersection best_intersection;
 
 		while (!s.empty())
 		{
@@ -42,13 +40,8 @@ namespace Svit
 			{
 				for (unsigned int i = bvhnode->left_idx; i < bvhnode->right_idx; i++)
 				{
-					auto isect = nodes[i]->intersect(_ray, best);
-					if (isect)
-					{
+					if (nodes[i]->intersect(_ray, _isect))
 						found = true;
-						best = isect->t;
-						best_intersection = *isect;
-					}
 				}
 			}
 			else
@@ -60,11 +53,8 @@ namespace Svit
 					s.push(bvhnode->right);
 			}
 		}
-    
-		if (found)
-			return boost::optional<Intersection>(best_intersection);
-		else
-			return boost::optional<Intersection>();  
+
+		return found;
 	}
 
 	void

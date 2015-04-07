@@ -5,29 +5,24 @@
 
 namespace Svit
 {
-	boost::optional<Intersection>
-	InfinitePlane::intersect (Ray& _ray, float _best)
+	bool
+	InfinitePlane::intersect (Ray& _ray, Intersection& _isect)
 	{
-		std::list<Intersection> result;
-
 		float angle = normal % _ray.direction;
 
 		if (angle == 0.0)
-			return boost::optional<Intersection>();
+			return false;
 
 		float t = -(normal % (_ray.origin - point))/angle;
-		if (t < _best && t > 0.0f)
+		if (t < _isect.t && t > 0.0f)
 		{
-			Intersection intersection;
-			intersection.t = t;
-			intersection.point = _ray(t);
-			intersection.node = this;
-
-			boost::optional<Intersection> result(intersection);
-			return result;
+			_isect.t = t;
+			_isect.point = _ray(t);
+			_isect.solid = this;
+			return true;
 		}
 		else
-			return boost::optional<Intersection>();
+			return false;
 	}
 
 	void
@@ -39,8 +34,11 @@ namespace Svit
 	void
 	InfinitePlane::dump (const char *_name, unsigned int _level)
 	{
-		std::cout << std::string(' ', _level*2) << _name << " = Infinite Plane" <<
-		    std::endl;
+		std::cout << std::string(' ', _level*2)
+		          << _name
+		          << " = InfinitePlane"
+		          << std::endl;
+
 		point.dump("point", _level+1);
 		normal.dump("normal", _level+1);
 	}

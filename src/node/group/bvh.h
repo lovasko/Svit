@@ -55,8 +55,8 @@ namespace Svit
 			     unsigned int _max_bucket_size,
 			     unsigned int _max_depth);
 
-			boost::optional<Intersection>
-			intersect (Ray& _ray, float _best) override;
+			bool
+			intersect (Ray& _ray, Intersection& _isect);
 
 			void
 			add (Node* _node) override;

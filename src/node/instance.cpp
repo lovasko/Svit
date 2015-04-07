@@ -9,30 +9,24 @@ namespace Svit
 		recompute_inverse();
 	}
 
-	boost::optional<Intersection>
-	Instance::intersect (Ray& _ray, float _best)
+	bool
+	Instance::intersect (Ray& _ray, Intersection& _isect)
 	{
 		_ray.origin.w = 1.0f;
 		_ray.direction.w = 0.0f;
+
 		Ray new_ray(inverse * _ray.origin, ~(inverse * _ray.direction));
-
 		new_ray.origin.w = 0.0f;
-		boost::optional<Intersection> node_intersection = node->intersect(new_ray, 
-		    _best);
 
-		if (node_intersection)
+		if (node->intersect(new_ray, _isect))
 		{
-			Point3 hit_point = matrix * node_intersection->point;
-			Intersection intersection;
-			intersection.t = node_intersection->t;
-			intersection.node = node_intersection->node;
-			intersection.point = hit_point;
+			Point3 hit_point = matrix * _isect.point;
+			_isect.point = hit_point;
 
-			boost::optional<Intersection> result(intersection);
-			return result;
+			return true;
 		}
 		else
-			return boost::optional<Intersection>();
+			return false;
 	}
 
 	void

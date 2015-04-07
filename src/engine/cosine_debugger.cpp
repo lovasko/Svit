@@ -8,16 +8,14 @@ namespace Svit
 	Vector3
 	CosineDebuggerEngine::get_color (Ray& _ray, World& _world)
 	{
-		boost::optional<Intersection> best = _world.scene->intersect(_ray,
-		    std::numeric_limits<float>::max());
+		Intersection isect;
+		isect.t = std::numeric_limits<float>::max();
 
-		if (best)
+		if (_world.scene->intersect(_ray, isect))
 		{
-			Intersection i = *best;
-			best->node->complete_intersection(&i);
-			float angle = (~_ray.direction) % (~(i.normal));
+			isect.solid->complete_intersection(&isect);
+			float angle = (~_ray.direction) % (~(isect.normal));
 			float color_value = fabs(angle); 
-
 			return Vector3(color_value, color_value, color_value);
 		}
 		else

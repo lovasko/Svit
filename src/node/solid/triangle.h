@@ -5,14 +5,12 @@
 #include "geom/point.h"
 #include "geom/vector.h"
 
-#include <list>
-
 namespace Svit
 {
 	class Triangle : public Solid
 	{
 		private:
-			Vector3 normal;			
+			Vector3 normal;
 			Vector3 e1;
 			Vector3 e2;
 
@@ -23,8 +21,8 @@ namespace Svit
 
 			Triangle (Point3 _p1, Point3 _p2, Point3 _p3);
 
-			boost::optional<Intersection>
-			intersect (Ray& _ray, float _best);
+			bool
+			intersect (Ray& _ray, Intersection& _isect);
 
 			void
 			complete_intersection (Intersection *_intersection);

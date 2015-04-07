@@ -14,7 +14,6 @@ rule link
 build obj/camera/perspective.o: compile src/camera/perspective.cpp
 
 # engine
-build obj/engine/engine.o: compile src/engine/engine.cpp
 build obj/engine/cosine_debugger.o: compile src/engine/cosine_debugger.cpp
 
 # geom

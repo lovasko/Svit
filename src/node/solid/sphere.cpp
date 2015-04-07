@@ -12,8 +12,8 @@ namespace Svit
 		bounding_box.extend(max);
 	}
 
-	boost::optional<Intersection>
-	Sphere::intersect (Ray& _ray, float _best)
+	bool
+	Sphere::intersect (Ray& _ray, Intersection& _isect)
 	{
 		Vector3 ray_origin_vector = _ray.origin - Point3(0,0,0);
 		Vector3 sphere_center_vector = center - Point3(0,0,0);
@@ -31,44 +31,38 @@ namespace Svit
 		if (A == 0.0f)
 		{
 			t = - C / B;
-			if (t < _best && t > 0.0f)
+			if (t < _isect.t && t > 0.0f)
 			{	
-				Intersection intersection;
-				intersection.t = t;
-				intersection.point = _ray(t);
-				intersection.node = this;
-
-				boost::optional<Intersection> result(intersection);
-				return result;
+				_isect.t = t;
+				_isect.solid = this;
+				_isect.point = _ray(t);
+				return true;
 			}
 			else
-				return boost::optional<Intersection>();
+				return false;
 		}
 		else
 		{
 			float discriminant = B * B - 4.0f * A * C;
 
 			if (discriminant < 0.0f)
-				return boost::optional<Intersection>();
+				return false;
 
 			float t1 = ( - B + sqrt(discriminant)) / (2 * A);
 			float t2 = ( - B - sqrt(discriminant)) / (2 * A);
 
-			bool t1_valid = t1 < _best && t1 >= 0.0001f;
-			bool t2_valid = t2 < _best && t2 >= 0.0001f;
+			bool t1_valid = t1 < _isect.t && t1 >= 0.0001f;
+			bool t2_valid = t2 < _isect.t && t2 >= 0.0001f;
 
-			if (!t1_valid && !t2_valid) return boost::optional<Intersection>();
+			if (!t1_valid && !t2_valid) return false;
 			if ( t1_valid &&  t2_valid) t = fmin(t1, t2);
 			if (!t1_valid &&  t2_valid) t = t2;
 			if ( t1_valid && !t2_valid) t = t1;
 	
-			Intersection intersection;
-			intersection.t = t;
-			intersection.point = _ray(t);
-			intersection.node = this;
-
-			boost::optional<Intersection> result(intersection);
-			return result;
+			_isect.t = t;
+			_isect.point = _ray(t);
+			_isect.solid = this;
+			return true;
 		}
 	}
 
@@ -81,11 +75,17 @@ namespace Svit
 	void
 	Sphere::dump (const char *_name, unsigned int _level)
 	{
-		std::cout << std::string(' ', _level*2) << _name << " = Sphere" <<
-		    std::endl;
+		std::cout << std::string(' ', _level*2)
+		          << _name
+		          << " = Sphere"
+		          << std::endl;
+
 		center.dump("center", _level+1);
-		std::cout << std::string(' ', (_level+1)*2)  << "radius = " << radius <<
-		    std::endl;
+
+		std::cout << std::string(' ', (_level+1)*2)
+		          << "radius = "
+		          << radius
+		          << std::endl;
 	}
 }
 

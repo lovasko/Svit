@@ -20,8 +20,8 @@ namespace Svit
 		public:
 			Disc (Point3 _point, Vector3 _normal, float _radius);
 
-			boost::optional<Intersection>
-			intersect (Ray& _ray, float _best);
+			bool
+			intersect (Ray& _ray, Intersection& _isect);
 
 			void
 			complete_intersection (Intersection *_intersection);

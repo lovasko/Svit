@@ -8,23 +8,15 @@ namespace Svit
 		nodes.push_back(_node);
 	}
 
-	boost::optional<Intersection>
-	SimpleGroup::intersect (Ray& _ray, float _best)
+	bool
+	SimpleGroup::intersect (Ray& _ray, Intersection& _isect)
 	{
-		float best = _best;
-		boost::optional<Intersection> result;
+		bool found = false;
 
 		for (auto node : nodes)
-		{
-			boost::optional<Intersection> i = node->intersect(_ray, best);
-			if (i)
-			{
-				best = i->t;
-				result = i;
-			}
-		}
+			found = node->intersect(_ray, _isect) || found;
 
-		return result;
+		return found;
 	}
 }
 

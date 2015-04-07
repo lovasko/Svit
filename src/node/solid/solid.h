@@ -11,15 +11,8 @@ namespace Svit
 	class Solid : public Node
 	{
 		public:
-			std::list<Intersection>
-			fail ()
-			{
-				std::list<Intersection> empty;
-				return empty;
-			}
-
 			virtual void
-			complete_intersection (Intersection *_intersection) = 0;
+			complete_intersection (Intersection* _isect) = 0;
 
 			virtual void
 			dump (const char *_name, unsigned int _level = 0) = 0;

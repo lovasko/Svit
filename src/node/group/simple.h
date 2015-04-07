@@ -14,8 +14,8 @@ namespace Svit
 			std::list<Node*> nodes;
 
 		public:
-			boost::optional<Intersection>
-			intersect (Ray& _ray, float _best);
+			bool
+			intersect (Ray& _ray, Intersection& _isect);
 
 			void
 			add (Node* _node);

@@ -4,8 +4,6 @@
 #include "node/solid/solid.h"
 #include "geom/point.h"
 
-#include <list>
-
 namespace Svit
 {
 	class Sphere : public Solid
@@ -17,14 +15,14 @@ namespace Svit
 		public:
 			Sphere (Point3 _center, float _radius);
 
-			boost::optional<Intersection>
-			intersect (Ray& _ray, float _best);
+			bool
+			intersect (Ray& _ray, Intersection& _isect) override;
 
 			void
-			complete_intersection (Intersection *_intersection);
+			complete_intersection (Intersection *_intersection) override;
 
 			void
-			dump (const char *_name, unsigned int _level = 0);
+			dump (const char *_name, unsigned int _level = 0) override;
 	};
 }
 

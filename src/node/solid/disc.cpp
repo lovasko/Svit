@@ -10,33 +10,30 @@ namespace Svit
 		radius2 = radius * radius;
 	}
 
-	boost::optional<Intersection>
-	Disc::intersect (Ray& _ray, float _best)
+	bool
+	Disc::intersect (Ray& _ray, Intersection& _isect)
 	{
 		float angle = normal % _ray.direction;
 
 		if (angle == 0.0)
-			return boost::optional<Intersection>();
+			return false;
 
 		float t = -(normal % (_ray.origin - point))/angle;
-		if (t < _best && t > 0.0f)
+		if (t < _isect.t && t > 0.0f)
 		{
 			Point3 hit_point = _ray(t);
 			Vector3 difference = hit_point - point;
 
 			if (difference % difference > radius2)
-				return boost::optional<Intersection>();	
+				return false;
 
-			Intersection intersection;
-			intersection.t = t;
-			intersection.point = _ray(t);
-			intersection.node = this;
-
-			boost::optional<Intersection> result(intersection);
-			return result;
+			_isect.t = t;
+			_isect.point = _ray(t);
+			_isect.solid = this;
+			return true;
 		}
 		else
-			return boost::optional<Intersection>();
+			return false;
 	}
 
 	void

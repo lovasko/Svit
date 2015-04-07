@@ -5,10 +5,6 @@
 #include "geom/ray.h"
 #include "node/intersection.h"
 
-#include <list>
-#include <iostream>
-#include <boost/optional.hpp>
-
 namespace Svit
 {
 	class Node
@@ -16,8 +12,8 @@ namespace Svit
 		public:
 			BoundingBox bounding_box;
 
-			virtual boost::optional<Intersection>
-			intersect (Ray& _ray, float _best) = 0;
+			virtual bool
+			intersect (Ray& _ray, Intersection& _isect) = 0;
 	};
 }
 
