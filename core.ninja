@@ -1,8 +1,4 @@
-cflags = -Isrc -I/opt/local/include -pthread -std=c++11 -O3 -Wall
-ldflags = -L/opt/local/lib -lpng
-
-# edit this line in order to lose support for a specific feature
-macros = -DUSE_SSE -DUSE_PNG
+# core svit build process
 
 rule compile
   command = clang++ $cflags $macros -c $in -o $out 
