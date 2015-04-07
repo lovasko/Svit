@@ -12,10 +12,8 @@
 #include "image/image.h"
 #include "model/obj.h"
 #include "node/group/simple.h"
-#include "node/group/kdtree/kdtree.h"
 #include "node/group/axis_selector/round_robin.h"
 #include "node/group/split_strategy/centre.h"
-#include "node/group/kdtree/kdtree.h"
 #include "node/group/bvh.h"
 #include "node/instance.h"
 #include "node/solid/disc.h"
@@ -38,7 +36,7 @@ main (void)
 	settings.area = Rectangle(Point2i(0, 0), Vector2i(800, 600));
 	settings.max_thread_count = std::thread::hardware_concurrency();
 	settings.tile_size = Vector2i(100, 100);
-	settings.max_sample_count = 2;
+	settings.max_sample_count = 1;
 	settings.adaptive_sample_step = 10;
 
 	CosineDebuggerEngine engine;
