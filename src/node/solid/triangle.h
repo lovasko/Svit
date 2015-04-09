@@ -10,7 +10,6 @@ namespace Svit
 	class Triangle : public Solid
 	{
 		private:
-			Vector3 normal;
 			Vector3 e1;
 			Vector3 e2;
 

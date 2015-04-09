@@ -11,7 +11,6 @@ namespace Svit
 
 		e1 = p2 - p1;
 		e2 = p3 - p1;
-		normal = ~(~e1 & ~e2);
 
 		bounding_box.extend(_p1);
 		bounding_box.extend(_p2);
@@ -52,7 +51,7 @@ namespace Svit
 	void
 	Triangle::complete_intersection (Intersection& _isect)
 	{
-		_isect.normal = normal;
+		_isect.normal = ~(~e1 & ~e2);
 	}
 
 	void
