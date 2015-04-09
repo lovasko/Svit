@@ -1,5 +1,5 @@
-output*.png
 bin/
 obj/
-.ninja_*
+/.ninja_*
+/*.png
 
