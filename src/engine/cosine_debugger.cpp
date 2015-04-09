@@ -13,7 +13,7 @@ namespace Svit
 
 		if (_world.scene->intersect(_ray, isect))
 		{
-			isect.solid->complete_intersection(&isect);
+			isect.solid->complete_intersection(isect);
 			float angle = (~_ray.direction) % (~(isect.normal));
 			float color_value = fabs(angle); 
 			return Vector3(color_value, color_value, color_value);

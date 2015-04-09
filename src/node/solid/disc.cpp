@@ -37,9 +37,9 @@ namespace Svit
 	}
 
 	void
-	Disc::complete_intersection (Intersection *_intersection)
+	Disc::complete_intersection (Intersection& _isect)
 	{
-		_intersection->normal = normal;
+		_isect.normal = normal;
 	}
 
 	void

@@ -19,7 +19,7 @@ namespace Svit
 			intersect (Ray& _ray, Intersection& _isect) override;
 
 			void
-			complete_intersection (Intersection *_intersection) override;
+			complete_intersection (Intersection& _isect) override;
 
 			void
 			dump (const char *_name, unsigned int _level = 0) override;

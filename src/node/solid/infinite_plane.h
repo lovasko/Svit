@@ -24,7 +24,7 @@ namespace Svit
 			intersect (Ray& _ray, Intersection& _isect);
 
 			void
-			complete_intersection (Intersection *_intersection);
+			complete_intersection (Intersection& _isect);
 
 			void
 			dump (const char *_name, unsigned int _level = 0);

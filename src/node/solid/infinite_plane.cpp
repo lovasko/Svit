@@ -26,9 +26,9 @@ namespace Svit
 	}
 
 	void
-	InfinitePlane::complete_intersection (Intersection *_intersection)
+	InfinitePlane::complete_intersection (Intersection& _isect)
 	{
-		_intersection->normal = normal;
+		_isect.normal = normal;
 	}
 
 	void

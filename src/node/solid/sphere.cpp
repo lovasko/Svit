@@ -67,9 +67,9 @@ namespace Svit
 	}
 
 	void
-	Sphere::complete_intersection (Intersection *_intersection)
+	Sphere::complete_intersection (Intersection& _isect)
 	{
-		_intersection->normal = ~(_intersection->point - center);
+		_isect.normal = ~(_isect.point - center);
 	}
 
 	void
