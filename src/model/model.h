@@ -1,6 +1,7 @@
 #ifndef SVIT_MODEL_MODEL_H
 #define SVIT_MODEL_MODEL_H
 
+#include <list>
 #include <string>
 
 #include "node/group/group.h"
