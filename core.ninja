@@ -1,10 +1,10 @@
 # core svit build process
 
 rule compile
-  command = clang++ $cflags $macros -c $in -o $out 
+  command = $compiler $cflags $macros -c $in -o $out 
 
 rule link
-  command = clang++ -o $out $in $ldflags
+  command = $compiler -o $out $in $ldflags
 
 # camera
 build obj/camera/perspective.o: compile src/camera/perspective.cpp

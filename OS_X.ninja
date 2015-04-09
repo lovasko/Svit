@@ -5,6 +5,9 @@ ldflags = -L/opt/local/lib -lpng
 # edit this line in order to lose support for a specific feature
 macros = -DUSE_SSE -DUSE_PNG
 
+# default compiler to use
+compiler = clang++
+
 # include the core build process
 include core.ninja
 
