@@ -5,7 +5,6 @@
 #include "geom/rectangle.h"
 
 #include <vector>
-#include <boost/optional.hpp>
 #include <mutex>
 
 namespace Svit
@@ -21,8 +20,8 @@ namespace Svit
 		public:
 			TaskDispatcher (Settings& _settings);
 
-			boost::optional<Task>
-			get_task ();
+			bool
+			get_task (Task* _task);
 
 			unsigned int index;
 	};

@@ -5,7 +5,6 @@
 #include <future>
 #include <vector>
 #include <utility>
-#include <boost/optional.hpp>
 #include <iostream>
 
 namespace Svit
@@ -23,11 +22,10 @@ namespace Svit
 		
 		while (1)
 		{
-			boost::optional<Task> optional_task = _task_dispatcher.get_task();
-			if (!optional_task)
+			Task task;
+			if (!_task_dispatcher.get_task(&task))
 				break;
 
-			Task task = optional_task.get();
 			settings.area = task;
 
 			Image rendered_image = serial_renderer.render(_world, settings, _engine,

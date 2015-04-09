@@ -36,15 +36,18 @@ namespace Svit
 		index = 0;
 	}
 
-	boost::optional<Task> 
-	TaskDispatcher::get_task ()
+	bool
+	TaskDispatcher::get_task (Task* _task)
 	{
 		std::lock_guard<std::mutex> guard(mutex);
 
 		if (index != tasks.size())
-			return boost::optional<Task>(tasks[index++]);
+		{
+			*_task = tasks[index++];
+			return true;
+		}
 		else
-			return boost::optional<Task>();
+			return false;
 	}
 }
 
