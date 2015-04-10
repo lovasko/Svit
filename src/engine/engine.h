@@ -12,7 +12,7 @@ namespace Svit
 	{
 		public:
 			virtual Vector3 
-			get_color (Ray& _ray, World& _world) = 0;
+			get_color (Ray& _ray, World& _world) const = 0;
 	};
 }
 

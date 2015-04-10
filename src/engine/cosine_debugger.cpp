@@ -6,7 +6,7 @@
 namespace Svit
 {
 	Vector3
-	CosineDebuggerEngine::get_color (Ray& _ray, World& _world)
+	CosineDebuggerEngine::get_color (Ray& _ray, World& _world) const
 	{
 		Intersection isect;
 		isect.t = std::numeric_limits<float>::max();
