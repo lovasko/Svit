@@ -15,13 +15,13 @@ namespace Svit
 
 		public:
 			bool
-			intersect (Ray& _ray, Intersection& _isect);
+			intersect (Ray& _ray, Intersection& _isect) const override;
 
 			void
-			add (Node* _node);
+			add (Node* _node) override;
 
 			void
-			finish () { }
+			finish () override;
 	};
 }
 

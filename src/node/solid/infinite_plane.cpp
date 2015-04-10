@@ -6,7 +6,7 @@
 namespace Svit
 {
 	bool
-	InfinitePlane::intersect (Ray& _ray, Intersection& _isect)
+	InfinitePlane::intersect (Ray& _ray, Intersection& _isect) const
 	{
 		float angle = normal % _ray.direction;
 
@@ -26,7 +26,7 @@ namespace Svit
 	}
 
 	void
-	InfinitePlane::complete_intersection (Intersection& _isect)
+	InfinitePlane::complete_intersection (Intersection& _isect) const
 	{
 		_isect.normal = normal;
 	}

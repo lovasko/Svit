@@ -21,10 +21,10 @@ namespace Svit
 			{ }
 
 			bool
-			intersect (Ray& _ray, Intersection& _isect);
+			intersect (Ray& _ray, Intersection& _isect) const override;
 
 			void
-			complete_intersection (Intersection& _isect);
+			complete_intersection (Intersection& _isect) const override;
 
 			void
 			dump (const char *_name, unsigned int _level = 0);

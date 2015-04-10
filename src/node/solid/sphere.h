@@ -16,10 +16,10 @@ namespace Svit
 			Sphere (Point3 _center, float _radius);
 
 			bool
-			intersect (Ray& _ray, Intersection& _isect) override;
+			intersect (Ray& _ray, Intersection& _isect) const override;
 
 			void
-			complete_intersection (Intersection& _isect) override;
+			complete_intersection (Intersection& _isect) const override;
 
 			void
 			dump (const char *_name, unsigned int _level = 0) override;

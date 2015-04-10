@@ -23,7 +23,7 @@ namespace Svit
 			Instance (Node *_node);
 
 			bool
-			intersect (Ray& _ray, Intersection& _isect);
+			intersect (Ray& _ray, Intersection& _isect) const override;
 
 			void
 			reset ();

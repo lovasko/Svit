@@ -9,7 +9,7 @@ namespace Svit
 	}
 
 	bool
-	SimpleGroup::intersect (Ray& _ray, Intersection& _isect)
+	SimpleGroup::intersect (Ray& _ray, Intersection& _isect) const
 	{
 		bool found = false;
 
@@ -17,6 +17,11 @@ namespace Svit
 			found = node->intersect(_ray, _isect) || found;
 
 		return found;
+	}
+
+	void
+	SimpleGroup::finish ()
+	{
 	}
 }
 

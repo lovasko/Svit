@@ -18,7 +18,7 @@ namespace Svit
 	}
 
 	bool
-	Triangle::intersect (Ray& _ray, Intersection& _isect)
+	Triangle::intersect (Ray& _ray, Intersection& _isect) const
 	{
 		Vector3 P = _ray.direction & e2;
 		float det = e1 % P;
@@ -49,7 +49,7 @@ namespace Svit
 	}
 
 	void
-	Triangle::complete_intersection (Intersection& _isect)
+	Triangle::complete_intersection (Intersection& _isect) const
 	{
 		_isect.normal = ~(~e1 & ~e2);
 	}

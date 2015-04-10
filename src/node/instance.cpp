@@ -10,7 +10,7 @@ namespace Svit
 	}
 
 	bool
-	Instance::intersect (Ray& _ray, Intersection& _isect)
+	Instance::intersect (Ray& _ray, Intersection& _isect) const
 	{
 		_ray.origin.w = 1.0f;
 		_ray.direction.w = 0.0f;

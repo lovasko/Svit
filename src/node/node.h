@@ -13,7 +13,7 @@ namespace Svit
 			BoundingBox bounding_box;
 
 			virtual bool
-			intersect (Ray& _ray, Intersection& _isect) = 0;
+			intersect (Ray& _ray, Intersection& _isect) const = 0;
 	};
 }
 

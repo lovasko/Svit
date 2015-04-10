@@ -19,7 +19,7 @@ namespace Svit
 	}
 
 	bool
-	BVH::intersect (Ray& _ray, Intersection& _isect)
+	BVH::intersect (Ray& _ray, Intersection& _isect) const
 	{
 		std::stack<BVHNode*> s;
 		s.push(&root);

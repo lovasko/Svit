@@ -13,7 +13,7 @@ namespace Svit
 	}
 
 	bool
-	Sphere::intersect (Ray& _ray, Intersection& _isect)
+	Sphere::intersect (Ray& _ray, Intersection& _isect) const
 	{
 		Vector3 ray_origin_vector = _ray.origin - Point3(0,0,0);
 		Vector3 sphere_center_vector = center - Point3(0,0,0);
@@ -67,7 +67,7 @@ namespace Svit
 	}
 
 	void
-	Sphere::complete_intersection (Intersection& _isect)
+	Sphere::complete_intersection (Intersection& _isect) const
 	{
 		_isect.normal = ~(_isect.point - center);
 	}
