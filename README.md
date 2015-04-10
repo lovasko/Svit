@@ -1,5 +1,6 @@
 # Svit
-C++11 raytracer
+Svit is an open-source CPU renderer that embraces modularity and distributivity
+whilst supporting as many architectures and platforms as possible.
 
 ## Features
 #### Graphical primitives
