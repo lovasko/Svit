@@ -1,5 +1,5 @@
 # platform specific paths and options
-cflags = -Isrc -I/opt/local/include -pthread -std=c++11 -O3 -Wall
+cflags = -Isrc -I/opt/local/include -pthread -std=c++11 -O3 -Wall -Wextra
 ldflags = -L/opt/local/lib -lpng
 
 # edit this line in order to lose support for a specific feature
