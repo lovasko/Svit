@@ -147,7 +147,19 @@ namespace Svit
 	{
 		std::stack<BVHNode*> s;
 
-		/* TODO root might be one-childed */
+		while (1)
+		{
+			if ((root.left == nullptr && root.right == nullptr)
+			 || (root.left != nullptr && root.right != nullptr))
+				break;
+
+			if (root.left == nullptr)
+				root = *(root.right);
+
+			if (root.right == nullptr)
+				root = *(root.left);
+		}
+
 		s.push(&root);
 
 		BVHNode* to_delete = nullptr;
