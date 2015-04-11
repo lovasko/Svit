@@ -10,7 +10,8 @@
 namespace Svit
 {
 	ObjModel::ObjModel ()
-	{ }
+	{
+	}
 
 	std::string
 	ObjModel::remove_commentary (std::string& _line)
