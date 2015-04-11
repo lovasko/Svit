@@ -5,6 +5,11 @@
 
 namespace Svit
 {
+	InfinitePlane::InfinitePlane (Point3 _point, Vector3 _normal)
+	 : point(_point), normal(_normal)
+	{
+	}
+
 	bool
 	InfinitePlane::intersect (Ray& _ray, Intersection& _isect) const
 	{

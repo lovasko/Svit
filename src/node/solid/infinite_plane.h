@@ -16,9 +16,7 @@ namespace Svit
 			Vector3 normal;
 
 		public:
-			InfinitePlane (Point3 _point, Vector3 _normal)
-				: point(_point), normal(_normal)
-			{ }
+			InfinitePlane (Point3 _point, Vector3 _normal);
 
 			bool
 			intersect (Ray& _ray, Intersection& _isect) const override;
