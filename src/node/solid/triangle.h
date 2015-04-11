@@ -10,14 +10,11 @@ namespace Svit
 	class Triangle : public Solid
 	{
 		private:
+			Point3 p1;
 			Vector3 e1;
 			Vector3 e2;
 
 		public:
-			Point3 p1;
-			Point3 p2;
-			Point3 p3;
-
 			Triangle (Point3 _p1, Point3 _p2, Point3 _p3);
 
 			bool

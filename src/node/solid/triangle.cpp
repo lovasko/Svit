@@ -3,14 +3,12 @@
 namespace Svit
 {
 	Triangle::Triangle (Point3 _p1, Point3 _p2, Point3 _p3)
-	  : p1(_p1), p2(_p2), p3(_p3)
+	 : p1(_p1)
 	{
 		p1.w = 0.0f;
-		p2.w = 0.0f;
-		p3.w = 0.0f;
 
-		e1 = p2 - p1;
-		e2 = p3 - p1;
+		e1 = _p2 - p1;
+		e2 = _p3 - p1;
 
 		bounding_box.extend(_p1);
 		bounding_box.extend(_p2);
@@ -63,8 +61,8 @@ namespace Svit
 		          << std::endl;
 
 		p1.dump("p1", _level+1);
-		p2.dump("p2", _level+1);
-		p3.dump("p3", _level+1);
+		(p1 + e1).dump("p2", _level+1);
+		(p1 + e2).dump("p3", _level+1);
 	}
 }
 
