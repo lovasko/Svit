@@ -10,7 +10,7 @@ namespace Svit
 
 	struct Intersection
 	{
-		Solid* solid;
+		const Solid* solid;
 		float t;
 		Vector3 normal;
 		Point3 point;

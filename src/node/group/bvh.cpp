@@ -21,14 +21,14 @@ namespace Svit
 	bool
 	BVH::intersect (Ray& _ray, Intersection& _isect) const
 	{
-		std::stack<BVHNode*> s;
+		std::stack<const BVHNode*> s;
 		s.push(&root);
 
 		bool found = false;
 
 		while (!s.empty())
 		{
-			BVHNode* bvhnode = s.top();
+			const BVHNode* bvhnode = s.top();
 			s.pop();
 
 			float t_near;

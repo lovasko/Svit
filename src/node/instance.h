@@ -10,8 +10,8 @@ namespace Svit
 	{
 		private:
 			Node *node;
-			Matrix44 matrix;
-			Matrix44 inverse;
+			mutable Matrix44 matrix;
+			mutable Matrix44 inverse;
 
 			void
 			combine (Matrix44& _transformation);
