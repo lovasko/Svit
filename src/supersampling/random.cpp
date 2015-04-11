@@ -9,6 +9,11 @@ namespace Svit
 		generator.seed(rd());
 	}
 
+	RandomSuperSampling::RandomSuperSampling (const RandomSuperSampling& other)
+	{
+		this->adaptive = other.adaptive;
+	}
+
 	Vector2
 	RandomSuperSampling::next_sample (int _x, int _y)
 	{

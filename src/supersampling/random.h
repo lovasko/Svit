@@ -17,10 +17,7 @@ namespace Svit
 		public:
 			RandomSuperSampling (bool _adaptive);
 
-			RandomSuperSampling (const RandomSuperSampling& other)
-			{
-				this->adaptive = other.adaptive;	
-			}
+			RandomSuperSampling (const RandomSuperSampling& other);
 
 			Vector2
 			next_sample (int _x, int _y) override;
