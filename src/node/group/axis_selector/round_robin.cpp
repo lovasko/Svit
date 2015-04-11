@@ -5,6 +5,8 @@ namespace Svit
 	Axis
 	RoundRobinAxisSelector::next (Axis _current, BoundingBox _bounding_box)
 	{
+		(void) _bounding_box;
+
 		switch (_current)
 		{
 			case Axis::X:
