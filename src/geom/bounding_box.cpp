@@ -7,6 +7,21 @@
 
 namespace Svit
 {
+	BoundingBox::BoundingBox ()
+	 : size_type(EMPTY)
+	{
+	}
+
+	BoundingBox::BoundingBox (Point3 _min, Point3 _max)
+	 : min(_min), max(_max), size_type(BOUNDED)
+	{
+	}
+
+	BoundingBox::BoundingBox (SizeType _size_type)
+	 : min(Point3()), max(Point3()), size_type(_size_type)
+	{
+	}
+
 	void
 	BoundingBox::extend (Point3& _point)
 	{
