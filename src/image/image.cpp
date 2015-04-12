@@ -85,9 +85,9 @@ namespace Svit
 		size_t row_size = size.x * 3;
 		png_bytep row = (png_bytep)malloc(row_size * sizeof(png_byte));
 
-		for (unsigned y = 0; y < size.y; y++)
+		for (int y = 0; y < size.y; y++)
 		{
-			for (unsigned x = 0; x < size.x; x++)
+			for (int x = 0; x < size.x; x++)
 			{
 				Vector3& rgb = (*this)(x, y);
 				row[x*3 + 0] = (png_byte)((rgb.x > 1.0 ? 1.0 : rgb.x) * 255.0); 
@@ -126,9 +126,9 @@ namespace Svit
 		ppm	<< size.x << " " << size.y << std::endl;
 		ppm << max_color << std::endl;
 
-		for (unsigned int y = 0; y < size.y; y++)
+		for (int y = 0; y < size.y; y++)
 		{
-			for (unsigned int x = 0; x < size.x; x++)
+			for (int x = 0; x < size.x; x++)
 			{
 				Vector3& rgb = (*this)(x, y);
 				ppm << (int)((rgb.x > 1.0 ? 1.0 : rgb.x) * (float)max_color) << " ";
