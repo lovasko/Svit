@@ -53,9 +53,9 @@ namespace Svit
 	}
 
 	void
-	Triangle::dump (const char *_name, unsigned int _level)
+	Triangle::dump (std::string _name, unsigned int _level) const
 	{
-		std::cout << std::string(' ', _level*2)
+		std::cout << std::string(_level*2, ' ')
 		          << _name
 		          << " = Triangle"
 		          << std::endl;

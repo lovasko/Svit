@@ -30,6 +30,17 @@ namespace Svit
 	}
 
 	void
+	Instance::dump (std::string _name, unsigned int _level) const
+	{
+		std::cout << std::string(_level*2, ' ')
+		          << _name
+		          << " = Instance"
+		          << std::endl;
+
+		node->dump("child", _level+1);
+	}
+
+	void
 	Instance::combine (Matrix44& _transformation)
 	{
 		matrix = _transformation * matrix;

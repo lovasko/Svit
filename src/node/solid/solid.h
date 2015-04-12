@@ -10,9 +10,6 @@ namespace Svit
 		public:
 			virtual void
 			complete_intersection (Intersection& _isect) const = 0;
-
-			virtual void
-			dump (const char *_name, unsigned int _level = 0) = 0;
 	};
 }
 

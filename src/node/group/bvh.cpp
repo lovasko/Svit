@@ -199,31 +199,23 @@ namespace Svit
 	}
 
 	void
-	BVH::dump (std::string _name)
+	BVH::dump (std::string _name, unsigned int _level) const
 	{
-		/* queue entry */
-		struct qe
+		std::cout << std::string(_level*2, ' ')
+		          << _name
+		          << " = BVH"
+		          << std::endl;
+
+		std::stack<std::pair<const BVHNode*, unsigned int>> s;
+		s.push(std::make_pair<const BVHNode*, unsigned int>(&root, _level+1));
+
+		while (!s.empty())
 		{
-			BVHNode* bvhnode;
-			unsigned int level;
+			auto entry = s.top();
+			s.pop();
 
-			qe (BVHNode* _bvhnode, unsigned int _level)
-			{
-				bvhnode = _bvhnode;
-				level = _level;
-			}
-		};
-
-		std::stack<struct qe*> q;
-		q.push(new qe(&root, 0));
-
-		while (!q.empty())
-		{
-			struct qe* e = q.top();
-			q.pop();
-
-			BVHNode* bvhnode = e->bvhnode;
-			unsigned int level = e->level;
+			const BVHNode* bvhnode = entry.first;
+			unsigned int level = entry.second;
 
 			std::string indent(level*2, ' ');
 			std::cout << indent 
@@ -232,10 +224,10 @@ namespace Svit
 			          << std::endl;
 
 			if (bvhnode->left != nullptr)
-				q.push(new qe(bvhnode->left, level+1));
+				s.push(std::make_pair<const BVHNode*, unsigned int>(bvhnode->left, level+1));
 
 			if (bvhnode->right != nullptr)
-				q.push(new qe(bvhnode->right, level+1));
+				s.push(std::make_pair<const BVHNode*, unsigned int>(bvhnode->right, level+1));
 		}
 	}
 }

@@ -37,9 +37,9 @@ namespace Svit
 	}
 
 	void
-	InfinitePlane::dump (const char *_name, unsigned int _level)
+	InfinitePlane::dump (std::string _name, unsigned int _level) const
 	{
-		std::cout << std::string(' ', _level*2)
+		std::cout << std::string(_level*2, ' ')
 		          << _name
 		          << " = InfinitePlane"
 		          << std::endl;

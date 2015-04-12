@@ -65,7 +65,7 @@ namespace Svit
 			finish () override;
 
 			void
-			dump (std::string _name);
+			dump (std::string _name, unsigned int _level = 0) const override;
 	};
 }
 

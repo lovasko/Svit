@@ -143,7 +143,7 @@ namespace Svit
 	void
 	BoundingBox::dump (std::string _name, unsigned int _level) const
 	{
-		std::cout << std::string(' ', _level*2)
+		std::cout << std::string(_level*2, ' ')
 		          << _name
 		          << " = BoundingBox"
 		          << std::endl;

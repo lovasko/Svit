@@ -11,7 +11,7 @@ namespace Svit
 	}
 
 	bool
-	Disc::intersect (Ray& _ray, Intersection& _isect)
+	Disc::intersect (Ray& _ray, Intersection& _isect) const
 	{
 		float angle = normal % _ray.direction;
 
@@ -37,19 +37,26 @@ namespace Svit
 	}
 
 	void
-	Disc::complete_intersection (Intersection& _isect)
+	Disc::complete_intersection (Intersection& _isect) const
 	{
 		_isect.normal = normal;
 	}
 
 	void
-	Disc::dump (const char *_name, unsigned int _level)
+	Disc::dump (const char *_name, unsigned int _level) const
 	{
-		std::cout << std::string(' ', _level*2) << _name << " = Disc" << std::endl;
+		std::cout << std::string(_level*2, ' ')
+		          << _name
+		          << " = Disc"
+		          << std::endl;
+
 		point.dump("point", _level+1);
 		normal.dump("normal", _level+1);
-		std::cout << std::string(' ', (_level+1)*2)  << "radius = " << radius <<
-		    std::endl;
+
+		std::cout << std::string((_level+1)*2, ' ')
+		          << "radius = "
+		          << radius
+		          << std::endl;
 	}
 }
 

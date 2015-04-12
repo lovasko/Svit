@@ -25,7 +25,7 @@ namespace Svit
 			complete_intersection (Intersection& _isect) const override;
 
 			void
-			dump (const char *_name, unsigned int _level = 0);
+			dump (std::string _name, unsigned int _level = 0) const override;
 	};
 }
 

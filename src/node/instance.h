@@ -26,6 +26,9 @@ namespace Svit
 			intersect (Ray& _ray, Intersection& _isect) const override;
 
 			void
+			dump (std::string _name, unsigned int _level = 0) const override;
+
+			void
 			reset ();
 
 			void
