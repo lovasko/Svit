@@ -69,12 +69,22 @@ namespace Svit
 			}
 
 			void
-			dump (const char *name, unsigned int level = 0) const
+			dump (std::string _name, unsigned int _level = 0) const
 			{
-				std::string indentation(level*2, ' ');
-				std::cout << std::setprecision(10) << std::fixed;
-				std::cout << indentation << name << " = Vector (" << x << ", " << y <<
-				    ", " << z << ", " << w << ")" << std::endl;
+				std::cout << std::setprecision(10)
+				          << std::fixed
+				          << std::string(_level*2, ' ')
+				          << _name
+				          << " = Vector ("
+				          << x
+				          << ", "
+				          << y
+				          << ", "
+				          << z
+				          << ", "
+				          << w
+				          << ")"
+				          << std::endl;
 			}
 
 			Scalar x, y, z, w;
