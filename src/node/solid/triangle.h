@@ -1,9 +1,9 @@
 #ifndef SVIT_TRIANGLE
 #define SVIT_TRIANGLE
 
-#include "node/solid/solid.h"
 #include "geom/point.h"
 #include "geom/vector.h"
+#include "node/solid/solid.h"
 
 namespace Svit
 {

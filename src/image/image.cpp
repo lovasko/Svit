@@ -1,9 +1,9 @@
+#include <assert.h>
+#include <stdint.h>
+
 #include <cmath>
 #include <fstream>
 #include <iostream>
-
-#include <assert.h>
-#include <stdint.h>
 
 #ifdef USE_PNG
 	#include <png.h>

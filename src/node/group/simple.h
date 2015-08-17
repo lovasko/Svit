@@ -1,10 +1,10 @@
 #ifndef SVIT_SIMPLE_GROUP
 #define SVIT_SIMPLE_GROUP
 
-#include "node/group/group.h"
-#include "geom/ray.h"
-
 #include <list>
+
+#include "geom/ray.h"
+#include "node/group/group.h"
 
 namespace Svit
 {

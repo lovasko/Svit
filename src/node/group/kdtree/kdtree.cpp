@@ -1,5 +1,6 @@
-#include "node/group/kdtree/kdtree.h"
 #include <stack>
+
+#include "node/group/kdtree/kdtree.h"
 
 namespace Svit
 {

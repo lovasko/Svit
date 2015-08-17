@@ -1,7 +1,7 @@
-#include "node/solid/infinite_plane.h"
-
 #include <iostream>
 #include <string>
+
+#include "node/solid/infinite_plane.h"
 
 namespace Svit
 {

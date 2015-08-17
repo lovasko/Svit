@@ -1,7 +1,7 @@
-#include "renderer/parallel/task_dispatcher.h"
-
 #include <cmath>
 #include <stdio.h>
+
+#include "renderer/parallel/task_dispatcher.h"
 
 namespace Svit
 {

@@ -1,11 +1,11 @@
 #ifndef SVIT_TASK_DISPATCHER
 #define SVIT_TASK_DISPATCHER
 
+#include <mutex>
+#include <vector>
+
 #include "renderer/settings.h"
 #include "geom/rectangle.h"
-
-#include <vector>
-#include <mutex>
 
 namespace Svit
 {

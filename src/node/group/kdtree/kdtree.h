@@ -5,9 +5,9 @@
 
 #include "geom/axis.h"
 #include "geom/ray.h"
+#include "node/group/axis_selector/axis_selector.h"
 #include "node/group/group.h"
 #include "node/group/kdtree/kdnode.h"
-#include "node/group/axis_selector/axis_selector.h"
 #include "node/group/split_strategy/split_strategy.h"
 
 namespace Svit

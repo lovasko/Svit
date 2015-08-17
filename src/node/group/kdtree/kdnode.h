@@ -3,9 +3,9 @@
 
 #include <vector>
 
-#include "node/node.h"
-#include "geom/bounding_box.h"
 #include "geom/axis.h"
+#include "geom/bounding_box.h"
+#include "node/node.h"
 
 namespace Svit
 {

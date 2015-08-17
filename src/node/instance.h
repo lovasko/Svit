@@ -1,8 +1,8 @@
 #ifndef SVIT_INSTANCE
 #define SVIT_INSTANCE
 
-#include "node/node.h"
 #include "geom/matrix.h"
+#include "node/node.h"
 
 namespace Svit
 {

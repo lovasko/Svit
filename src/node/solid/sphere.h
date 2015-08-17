@@ -1,8 +1,8 @@
 #ifndef SVIT_SPHERE
 #define SVIT_SPHERE
 
-#include "node/solid/solid.h"
 #include "geom/point.h"
+#include "node/solid/solid.h"
 
 namespace Svit
 {

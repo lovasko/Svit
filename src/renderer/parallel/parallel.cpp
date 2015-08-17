@@ -1,11 +1,11 @@
-#include "renderer/parallel/parallel.h"
-#include "renderer/serial/serial.h"
-
 #include <thread>
 #include <future>
 #include <vector>
 #include <utility>
 #include <iostream>
+
+#include "renderer/parallel/parallel.h"
+#include "renderer/serial/serial.h"
 
 namespace Svit
 {

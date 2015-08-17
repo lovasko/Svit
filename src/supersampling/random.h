@@ -1,9 +1,9 @@
 #ifndef SVIT_RANDOM_SUPERSAMPLING
 #define SVIT_RANDOM_SUPERSAMPLING
 
-#include "supersampling/supersampling.h"
-
 #include <random>
+
+#include "supersampling/supersampling.h"
 
 namespace Svit
 {

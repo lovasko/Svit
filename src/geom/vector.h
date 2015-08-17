@@ -1,12 +1,12 @@
 #ifndef SVIT_GEOM_VECTOR_H
 #define SVIT_GEOM_VECTOR_H
 
+#include <assert.h>
+
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
 #include <stdexcept>
-
-#include <assert.h>
 
 namespace Svit
 {

@@ -1,16 +1,16 @@
 #ifndef SVIT_PARALLEL_RENDERER
 #define SVIT_PARALLEL_RENDERER
 
-#include "renderer/settings.h"
+#include <utility>
+#include <vector>
+
+#include "engine/engine.h"
+#include "geom/rectangle.h"
 #include "image/image.h"
 #include "renderer/parallel/task_dispatcher.h"
-#include "geom/rectangle.h"
-#include "world/world.h"
-#include "engine/engine.h"
 #include "renderer/renderer.h"
-
-#include <vector>
-#include <utility>
+#include "renderer/settings.h"
+#include "world/world.h"
 
 namespace Svit
 {

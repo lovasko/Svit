@@ -1,11 +1,11 @@
 #ifndef SVIT_INFINITE_PLANE
 #define SVIT_INFINITE_PLANE
 
-#include "node/solid/solid.h"
-#include "node/node.h"
 #include "geom/point.h"
-#include "geom/vector.h"
 #include "geom/ray.h"
+#include "geom/vector.h"
+#include "node/node.h"
+#include "node/solid/solid.h"
 
 namespace Svit
 {
